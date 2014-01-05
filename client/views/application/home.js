@@ -9,9 +9,10 @@ Template.home.events({
         }
 
         Meteor.call('submitURL', url, function(error, result) {
-           console.log(error);
            if (error) Errors.throw(error.reason);
            // else Router.go('urlPage', {_id: result}); // go the the page listing url details
+           else console.log(result);
         });
+
     }
 });

@@ -1,3 +1,3 @@
 Meteor.publish('singleURL', function(shortURL) {
-   return URLs.find();
+   return URLs.find({ shortURL: shortURL});
 });
