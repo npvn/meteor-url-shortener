@@ -5,10 +5,13 @@ Template.home.events({
         var url = {
             targetURL: $(e.target).find('[name=longURL]').val(),
             shortURL: $(e.target).find('[name=shortURL]').val(),
-            numVisit: 0,
-            showPublic: $(e.target).find('[name=options]').val()
+            makePrivate: $(e.target).find('[name=makePrivate]').is(':checked')
         }
 
-        console.log(url.showPublic);
+        Meteor.call('submitURL', url, function(error, result) {
+           console.log(error);
+           if (error) Errors.throw(error.reason);
+           // else Router.go('urlPage', {_id: result}); // go the the page listing url details
+        });
     }
 });

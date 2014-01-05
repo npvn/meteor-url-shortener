@@ -10,3 +10,4 @@ meteor-accounts-ui-bootstrap-dropdown
 accounts-password
 bootstrap
 iron-router
+errors

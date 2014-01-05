@@ -12,6 +12,6 @@ if (URLs.find().count() === 0) {
        timeCreated: (new Date()).getTime(),
        timeModified: null,
        numVisit: 0,
-       showPublic: true
+       makePrivate: false
     });
 }
