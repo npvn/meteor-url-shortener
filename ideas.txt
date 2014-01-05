@@ -1,5 +1,5 @@
 
-- allow account registration 
+- allow account registration
 
 - also allow anonymous short url creation
 
@@ -16,6 +16,6 @@ showPublic // to be shown on homepage or not
 
 - each user account will have these fields
 name
-email
+email 
 
 - a dashboard for each user to see their urls and url statistics
