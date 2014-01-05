@@ -1,0 +1,24 @@
+<template name="userPage">
+    {{#if currentUser}}
+
+        {{#if hasURL}}
+            Your URLs:
+            <ul>
+                {{#each this}}
+                    <li>
+                        <p>URL: {{hostname}}/{{shortURL}}</p>
+                        <p>Target: {{targetURL}}</p>
+                        <p>Private: {{makePrivate}}</p>
+                        <a href="{{pathFor 'urlEdit'}}">Edit</a>
+                    </li>
+                {{/each}}
+            </ul>
+
+        {{else}}
+            You haven't created any URL.
+        {{/if}}
+
+    {{else}}
+        Please login to view details of your URLs.
+    {{/if}}
+</template>

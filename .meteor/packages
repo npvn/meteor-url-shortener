@@ -12,3 +12,4 @@ bootstrap
 iron-router
 errors
 random
+iron-router-progress
