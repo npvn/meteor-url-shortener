@@ -1,0 +1,21 @@
+
+- allow account registration
+
+- also allow anonymous short url creation
+
+- allow url edit
+
+- each document in 'url' collection will have these fields:
+target
+shortURL // generated following a certain rule
+userId // null for anonymous urls
+timeCreated
+timeModified
+numVisit
+showPublic // to be shown on homepage or not
+
+- each user account will have these fields
+name
+email
+
+- a dashboard for each user to see their urls and url statistics
