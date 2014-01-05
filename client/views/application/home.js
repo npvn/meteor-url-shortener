@@ -10,8 +10,7 @@ Template.home.events({
 
         Meteor.call('submitURL', url, function(error, result) {
            if (error) Errors.throw(error.reason);
-           // else Router.go('urlPage', {_id: result}); // go the the page listing url details
-           else console.log(result);
+           else Router.go('urlPage', {shortURL: result}); // go the the page listing url details
         });
 
     }
