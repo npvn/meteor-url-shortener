@@ -1,5 +1,5 @@
 
-- allow account registration
+- allow account registration 
 
 - also allow anonymous short url creation
 
