@@ -12,10 +12,10 @@ userId // null for anonymous urls
 timeCreated
 timeModified
 numVisit
-showPublic // to be shown on homepage or not
+showPublic // to be shown on homepage or not   
 
 - each user account will have these fields
 name
-email 
+email
 
 - a dashboard for each user to see their urls and url statistics
