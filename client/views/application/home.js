@@ -13,7 +13,5 @@ Template.home.events({
            else Router.go('urlPage', {shortURL: result}); // go the the page listing url details
         });
 
-        console.log(getRoutePaths());
-
     }
 });

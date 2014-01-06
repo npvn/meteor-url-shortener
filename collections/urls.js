@@ -34,20 +34,7 @@ Meteor.methods({
        return url.shortURL;
    },
 
-   incrementVisitCount: function(shortURL) {
-       console.log('***serverLog ' + URLs.findOne({ shortURL: shortURL}).targetURL);
-       //URLs.update( {shortURL: shortURL}, {$inc: {numVisit: 1}} );
-       return URLs.findOne({ shortURL: shortURL}).targetURL;
-   },
-
-   getURLId: function(shortURL) {
-       //console.log(shortURL);
-       //console.log(URLs.findOne({ shortURL: shortURL}));
-       var url = URLs.findOne({ shortURL: shortURL});
-       //if (url) console.log(url._id);
-       if (url) {
-           console.log('server ' + url._id);
-           return url._id;
-       }
+   incrementVisitCount: function(id) {
+       URLs.update( {_id: id}, {$inc: {numVisit: 1}} );
    }
 });
