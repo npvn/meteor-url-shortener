@@ -1,3 +1,9 @@
 <template name="redirect">
-    Redirecting to {{targetURL}} ...
+    {{#if urlExist}}
+        Redirecting to {{targetURL}} ...
+        {{processRedirection}}
+    {{else}}
+        {{>notFound}}
+    {{/if}}
+
 </template>

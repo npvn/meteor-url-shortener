@@ -10,7 +10,9 @@ the related document in db, this change is automatically reflected in var id, th
 will be run again (since the code block depends on the value of var id). And when the code is run again,
 the related doc in db is changed again, and this pattern loops forever.
 
-A possible fix is to add {reactive: false} to db query options.
+A possible fix is to add {reactive: false} to db query options, which will tell minomongo NOT to
+observe future change and NOT to update this var automatically:
+var id = URLs.findOne( { shortURL: this.data.shortURL }, {reactive: false} )._id;
 
 
 
@@ -26,6 +28,14 @@ Template.redirect.rendered = function() {
   var urlId = this.data._id;
   URLs.update( {_id: urlId}, {$inc:{numVisit:1}});
 };
+
+
+
+/* Access context data in helpers vs events vs rendered -------------------------------------------------------*/
+
+In helpers, use 'this'
+In events, use 'this'
+In rendered, user 'this.data'
 
 
 

@@ -19,3 +19,7 @@ name
 email
 
 - a dashboard for each user to see their urls and url statistics
+
+- a list of recently-created public URLs
+
+- Improve the look and feel

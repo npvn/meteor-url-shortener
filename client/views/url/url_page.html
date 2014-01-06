@@ -1,15 +1,29 @@
 <template name="urlPage">
 
-    <p>
-        The following URL: {{targetURL}}
-    </p>
+    {{#if canBeDisplayed}}
 
-    <p>
-        has been shortened to: {{hostname}}/{{shortURL}}
-    </p>
+        <p>
+            The following URL: {{targetURL}}
+        </p>
 
-    <p>
-        Total number of visits: {{numVisit}}
-    </p>
+        <p>
+            has been shortened to: {{hostname}}/{{shortURL}}
+        </p>
+
+        <p>
+            Total number of visits: {{numVisit}}
+        </p>
+
+        <p>
+            Private: {{makePrivate}}
+        </p>
+
+        <p><a href="{{pathFor 'urlEdit'}}">Edit</a></p>
+
+    {{else}}
+
+        <p>This URL is marked as private. Please login with the author account to view its details.</p>
+
+    {{/if}}
 
 </template>

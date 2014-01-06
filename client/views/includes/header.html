@@ -13,6 +13,12 @@
 
             <div class="nav-collapse collapse">
 
+                <ul class="nav">
+                    {{#if currentUser}}
+                        <li><a href="{{pathFor 'userPage'}}">Manage Your URLs</a> </li>
+                    {{/if}}
+                </ul>
+
                 <ul class="nav pull-right">
                     <li>{{loginButtons}}</li>
                 </ul>
