@@ -1,5 +1,4 @@
 Template.urlEdit.helpers({
-    hostname: function() { return getHostname(); },
     isChecked: function() {
         if (this.makePrivate) return 'checked';
         else return '';

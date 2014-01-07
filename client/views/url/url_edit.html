@@ -1,7 +1,7 @@
 <template name="urlEdit">
     {{#if isOwnURL}}
     <form>
-        <p>URL: {{hostname}}/<input name="shortURL" class="input-small" type="text" value="{{shortURL}}"></p>
+        <p>URL: {{getHostName}}/<input name="shortURL" class="input-small" type="text" value="{{shortURL}}"></p>
         <p>Target: <input name="targetURL" class="input-xxlarge" type="text" value="{{targetURL}}"> </p>
         <p>Make private: <input name="makePrivate" type="checkbox" {{isChecked}}></p>
         <button type="submit" class="btn">Update</button>
