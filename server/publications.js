@@ -5,3 +5,7 @@ Meteor.publish('singleURL', function(shortURL) {
 Meteor.publish('userURLs', function() {
    return URLs.find({ userId: this.userId });
 });
+
+Meteor.publish('publicURLs', function(limit) {
+   return URLs.find( {makePrivate: false}, {limit: limit} );
+});

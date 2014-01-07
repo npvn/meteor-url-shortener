@@ -1,0 +1,19 @@
+<template name="publicList">
+    <ul>
+        {{#each publicURLs}} {{! publicURLs is the object that holds all docs - defined in my router data code}}
+            <li>
+                <a href="{{getHostName}}/{{shortURL}}">{{getHostName}}/{{shortURL}}</a>
+                Target: <a href="{{targetURL}}">{{targetURL}}</a> -
+                <a href="{{pathFor 'urlPage'}}">{{pluralize numVisit 'visit'}}</a>
+            </li>
+        {{/each}}
+
+
+        {{#if hasMorePublicURLs}}
+            <a href='{{loadMore}} {{! See the data definition in PublicURLsController}}'>Load more...</a>
+        {{/if}}
+
+    </ul>
+
+
+</template>

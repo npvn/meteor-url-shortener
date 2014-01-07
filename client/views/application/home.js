@@ -1,4 +1,6 @@
 Template.home.events({
+
+
     'submit form': function(e) {
         e.preventDefault();
 
@@ -13,5 +15,24 @@ Template.home.events({
            else Router.go('urlPage', {shortURL: result}); // go the the page listing url details
         });
 
+    },
+
+    'click #viewPublicURLs': function(e) {
+        e.preventDefault();
+
+        // If currently on home, redirect to homeWithPublicList
+        if (Router.current().route.name === 'home') Router.go('homeWithPublicList', {limit: 7});
+        // If currently on homeWithPublicList, clicking the button will show/hide URLs list
+        else {
+            var urlsList = $('#publicList');
+            if (urlsList.hasClass('isHidden')) urlsList.removeClass('isHidden').slideDown();
+            else urlsList.addClass('isHidden').slideUp();
+        }
     }
 });
+
+
+// Hide public URLs list on load
+Template.home.rendered = function() {
+    if (Router.current().route.name !== 'homeWithPublicList') $('#publicList').hide();
+};
