@@ -28,6 +28,10 @@ Template.home.events({
             if (urlsList.hasClass('isHidden')) urlsList.removeClass('isHidden').slideDown();
             else urlsList.addClass('isHidden').slideUp();
         }
+    },
+
+    'mouseover #checkboxTooltip': function(e) {
+        $(e.target).tooltip('toggle');
     }
 });
 

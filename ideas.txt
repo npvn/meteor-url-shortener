@@ -22,4 +22,7 @@ email
 
 - a list of recently-created public URLs
 
+- include more statistics: browser, OS, country
+=> there should be a separate db for click info: { _id, shortURLId, browser, OS, country }
+
 - Improve the look and feel

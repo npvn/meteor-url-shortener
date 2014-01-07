@@ -11,7 +11,15 @@
             {{getHostName}}/<input name="shortURL" class="input-medium" type="text" placeholder="your-custom-url">
 
             <label class="checkbox inline myLabel">
-                <input name="makePrivate" type="checkbox">Make private
+                {{#if currentUser}}
+                    <input name="makePrivate" type="checkbox">Make private
+                {{else}}
+                    <div id="checkboxTooltip" data-title="Please login to mark URL as private. Private URLs are not listed on homepage and their statistics can only be viewed by the creator." data-placement="right">
+                        <input name="makePrivate" type="checkbox" disabled>Make private
+                    </div>
+
+                {{/if}}
+
             </label>
 
         </div>
