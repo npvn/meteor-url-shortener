@@ -3,7 +3,13 @@ Template.urlEdit.helpers({
         if (this.makePrivate) return 'checked';
         else return '';
     },
-    isOwnURL: function() { return this.userId === Meteor.userId(); }
+    isOwnURL: function() {
+        return this.userId && this.userId === Meteor.userId(); // guard from null === null
+    },
+    reasonCannotEdit: function() {
+        if ( !this.userId && !this.makePrivate ) return 'Anonymous public URLs cannot be edited.';
+        else return 'Only the author can edit details of this URL.';
+    }
 });
 
 

@@ -24,14 +24,14 @@ Meteor.methods({
        // If user has chosen a short url
        if (urlAttributes.shortURL) {
            // Check if the chosen short url is unique
-           if ( URLs.findOne({ shortURL: urlAttributes.shortURL }) || _.contains( getRoutePaths(), urlAttributes.shortURL ) ) throw new Meteor.Error(302, 'The chosen URL is not available.')
+           if ( URLs.findOne({ shortURL: urlAttributes.shortURL }) || _.contains( getReservedPaths(), urlAttributes.shortURL ) ) throw new Meteor.Error(302, 'The chosen URL is not available.')
            else var shortURL = urlAttributes.shortURL;
        // If not, generate a random string
        } else {
            var numberOfDigits = getRandomInt(3, 9);
            var shortURL = Random.hexString(numberOfDigits);
            // Make sure it is unique
-           while ( URLs.findOne({ shortURL: shortURL}) || _.contains( getRoutePaths(), shortURL ) ) shortURL = Random.hexString(numberOfDigits);
+           while ( URLs.findOne({ shortURL: shortURL}) || _.contains( getReservedPaths(), shortURL ) ) shortURL = Random.hexString(numberOfDigits);
        }
 
 
@@ -61,14 +61,14 @@ Meteor.methods({
         // If user choose another shortURL
         else if (urlAttributes.shortURL !== currentShortURL) {
             // Check if the chosen short url is unique
-            if ( URLs.findOne({ shortURL: urlAttributes.shortURL }) || _.contains( getRoutePaths(), urlAttributes.shortURL ) ) throw new Meteor.Error(302, 'The chosen URL is not available.')
+            if ( URLs.findOne({ shortURL: urlAttributes.shortURL }) || _.contains( getReservedPaths(), urlAttributes.shortURL ) ) throw new Meteor.Error(302, 'The chosen URL is not available.')
             else shortURL = urlAttributes.shortURL;
         // If user leave the shortURL empty
         } else {
             var numberOfDigits = getRandomInt(3, 9);
             shortURL = Random.hexString(numberOfDigits);
             // Make sure it is unique
-            while ( URLs.findOne({ shortURL: shortURL}) || _.contains( getRoutePaths(), shortURL ) ) shortURL = Random.hexString(numberOfDigits);
+            while ( URLs.findOne({ shortURL: shortURL}) || _.contains( getReservedPaths(), shortURL ) ) shortURL = Random.hexString(numberOfDigits);
         }
 
 

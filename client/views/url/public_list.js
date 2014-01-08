@@ -1,8 +1,11 @@
 Template.publicList.helpers({
+    publicURLsExist: function() {
+        return this.publicURLs ? !!this.publicURLs.count() : false;
+    },
     hasMorePublicURLs: function() {
         if (this.publicURLs) {
             this.publicURLs.rewind();
-            return Router.current().limit() === this.publicURLs.count();
+            if (Router.current().limit) return Router.current().limit() === this.publicURLs.count(); // guard this line by an 'if' to fix an exception when clicking '[num] visits' on homepage
         }
     }
 });

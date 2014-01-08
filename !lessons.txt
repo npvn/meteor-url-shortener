@@ -39,3 +39,7 @@ In rendered, user 'this.data'
 
 
 
+/* On the issues of rounded percentage numbers do not add up to 100 --------------------------------------------*/
+
+Read this: http://stackoverflow.com/questions/5227215/how-to-deal-with-the-sum-of-rounded-percentage-not-being-100
+

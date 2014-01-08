@@ -1,3 +1,4 @@
+/*
 if (URLs.find().count() === 0) {
     // create a default user
     var phucId = Meteor.users.insert({
@@ -15,3 +16,4 @@ if (URLs.find().count() === 0) {
        makePrivate: false
     });
 }
+*/

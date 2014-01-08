@@ -1,29 +1,53 @@
 <template name="urlPage">
 
-    {{#if canBeDisplayed}}
+    {{#if urlExist}}
 
-        <p>
-            The following URL: {{targetURL}}
-        </p>
+        {{#if canBeDisplayed}}
 
-        <p>
-            has been shortened to: {{getHostName}}/{{shortURL}}
-        </p>
+            {{#with urlData}}
 
-        <p>
-            Total number of visits: {{numVisit}}
-        </p>
+                <p>The following URL: {{targetURL}}</p>
+                <p>has been shortened to: {{getHostName}}/{{shortURL}}</p>
+                {{#if isOwnURL}}<p><a href="{{pathFor 'urlEdit'}}">Edit</a></p>{{/if}}
 
-        <p>
-            Private: {{makePrivate}}
-        </p>
+                <div><br>
+                    <h4>URL's statistics (updated in real-time)</h4>
+                    Total visits: {{numVisit}}
 
-        <p><a href="{{pathFor 'urlEdit'}}">Edit</a></p>
+            {{/with}}
 
-    {{else}}
+                <ul>By browser:
+                    {{#each getStatistics 'browser'}}
+                    <li>{{printStatistics this}}</li>
+                    {{/each}}
+                </ul>
+
+                <ul>By OS:
+                    {{#each getStatistics 'os'}}
+                    <li>{{printStatistics this}}</li>
+                    {{/each}}
+                </ul>
+
+                <ul>By country:
+                    {{#each getStatistics 'country'}}
+                    <li>{{printStatistics this}}</li>
+                    {{/each}}
+                </ul>
+
+            </div>
+
+        {{else}}
 
         <p>This URL is marked as private. Please login with the author account to view its details.</p>
 
+        {{/if}}
+
+    {{else}}
+
+        {{render404}}
+
     {{/if}}
+
+
 
 </template>

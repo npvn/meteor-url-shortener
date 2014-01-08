@@ -1,15 +1,14 @@
 Template.redirect.helpers({
     urlExist: function() {
-        if (this.targetURL) return true;
-        else return false; // if the short URL does not exist, then the data context (queried by router) will not be a valid URL object
-    },
-    processRedirection: function() {
-        var targetURL = this.targetURL;
-
-        // Since I have set the current data context to be reactive, I have to use a server-side method to update visit count (instead of updating on client-side)
-        Meteor.call('incrementVisitCount', this._id , function(error, result) {
-            if (error) Errors.throw(error.reason);
-            else window.location = targetURL; // console.log(result);
-        });
+        return ( !! this.targetURL); // if the short URL does not exist, then the data context (queried by router) will not be a valid URL object
     }
 });
+
+
+Template.redirect.rendered = function() {
+    // Fire a JSONP request, this request will trigger the trackInfoAndRedirect() helper
+    var script = document.createElement('script');
+    script.setAttribute('src', 'http://smart-ip.net/geoip-json?callback=trackInfoAndRedirect');
+    $('body').append(script);
+    setTimeout(function() {$(script).remove(); }, 1000);
+};

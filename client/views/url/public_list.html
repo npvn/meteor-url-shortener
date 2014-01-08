@@ -1,4 +1,7 @@
 <template name="publicList">
+
+    {{#if publicURLsExist}}
+
     <ul>
         {{#each publicURLs}} {{! publicURLs is the object that holds all docs - defined in my router data code}}
             <li>
@@ -15,5 +18,10 @@
 
     </ul>
 
+    {{else}}
+
+        <p>There's no public URL to show.</p>
+
+    {{/if}}
 
 </template>
