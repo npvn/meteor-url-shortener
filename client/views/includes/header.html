@@ -1,31 +1,20 @@
 <template name="header">
-
-    <header class="navbar">
+    <header class="navbar navbar-fixed-top navbar-inverse">
         <div class="navbar-inner">
 
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </a>
+            <ul class="nav">
+                <li class="{{isActive 'home'}}"><a href="#">Home</a></li>
+                {{#if currentUser}}<li class="{{isActive 'manage'}}"><a href="{{pathFor 'userPage'}}">Manage Your URLs</a> </li>{{/if}}
+                <li class="{{isActive 'publicList'}}"><a href="#">View Public URLs</a></li>
+            </ul>
 
-            <a class="brand" href="{{pathFor 'home'}}">NP URL Shortener</a>
-
-            <div class="nav-collapse collapse">
-
-                <ul class="nav">
-                    {{#if currentUser}}
-                        <li><a href="{{pathFor 'userPage'}}">Manage Your URLs</a> </li>
-                    {{/if}}
-                </ul>
-
-                <ul class="nav pull-right">
-                    <li>{{loginButtons}}</li>
-                </ul>
-
-            </div>
+            <ul class="nav pull-right">
+                <li>{{loginButtons}}</li>
+            </ul>
 
         </div>
     </header>
+
+    <h1 class="custom-headline">NP URL Shortener</h1>
 
 </template>

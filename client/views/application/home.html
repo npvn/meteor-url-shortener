@@ -1,35 +1,47 @@
 <template name="home">
+
+
     <form>
 
         <div class="input-append">
             <input name="longURL" class="input-xxlarge" type="text" placeholder="Enter your long URL here">
-            <button type="submit" class="btn">Submit</button> <br>
+            <button type="submit" class="btn btn-primary">Submit</button>
         </div>
 
-        <div class="form-inline">
+        <div class="control-group form-inline">
 
-            {{getHostName}}/<input name="shortURL" class="input-medium" type="text" placeholder="your-custom-url">
+            <div class="input-prepend">
+                <span class="add-on">→ {{getHostName}} / </span>
+                <input id="shortURLInput" name="shortURL" class="input-small" type="text" placeholder="  custom-url">
+            </div>
 
-            <label class="checkbox inline myLabel">
-                {{#if currentUser}}
-                    <input name="makePrivate" type="checkbox">Make private
-                {{else}}
-                    <div id="checkboxTooltip" data-title="Please login to mark URL as private. Private URLs are not listed on homepage and their statistics can only be viewed by the creator." data-placement="right">
-                        <input name="makePrivate" type="checkbox" disabled>Make private
-                    </div>
 
-                {{/if}}
+                <label class="checkbox inline myLabel">
+                    {{#if currentUser}}
+                        <input name="makePrivate" type="checkbox">Make private
+                    {{else}}
+                        <div id="checkboxTooltip" data-title="Please login to mark URL as private. Private URLs are not listed on homepage and their statistics can only be viewed by the creator." data-placement="right">
+                            <input name="makePrivate" type="checkbox" disabled>Make private
+                        </div>
 
-            </label>
+
+
+                    {{/if}}
+
+                </label>
+
+
 
         </div>
 
     </form>
 
+    <div class="publicURLBlock">
+        <div id="viewPublicURLs"><a href="{{loadMore}} {{! This's a function in my route definition}}">View Public URLs</a></div>
 
-    <div id="viewPublicURLs"><a href="{{loadMore}} {{! This's a function in my route definition}}">View Public URLs</a></div>
-
-    <div id="publicList" class="isHidden">
-        {{>publicList}}
+        <div id="publicList" class="isHidden">
+            {{>publicList}}
+        </div>
     </div>
+
 </template>

@@ -6,10 +6,10 @@
 standard-app-packages
 insecure
 preserve-inputs
-meteor-accounts-ui-bootstrap-dropdown
 accounts-password
-bootstrap
-iron-router
 errors
 random
 iron-router-progress
+meteor-accounts-ui-bootstrap-dropdown
+iron-router
+bootstrap

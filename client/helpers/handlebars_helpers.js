@@ -1,7 +1,7 @@
 Handlebars.registerHelper('getHostName', function() {
     var a = document.createElement('a');
     a.href = '/';
-    return a.hostname;
+    return a.hostname === 'localhost' ? 'mydomain.com' : a.hostname;
 });
 
 Handlebars.registerHelper('pluralize', function(n, thing) {
