@@ -2,11 +2,16 @@
     <div class="container">
 
         {{>header}}
-        {{>meteorErrors}}
 
-        {{yield}}
+        <div id="contentContainer" class="container">
 
-        {{>footer}}
+            {{yield}}
+
+            {{>meteorErrors}}
+
+            {{>footer}}
+
+        </div>
 
     </div>
 </template>

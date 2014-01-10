@@ -2,13 +2,18 @@
 
     {{#if publicURLsExist}}
 
-    <ul>
+
+    <div class="publicList">
         {{#each publicURLs}} {{! publicURLs is the object that holds all docs - defined in my router data code}}
-            <li>
-                <a href="{{targetURL}}">{{targetURL}}</a>
-                → <a href="{{getHostName}}/{{shortURL}}">{{getHostName}}/{{shortURL}}</a> -
-                <a href="{{pathFor 'urlPage'}}">{{pluralize numVisit 'visit'}}</a>
-            </li>
+            <div class="row">
+                <a href="{{targetURL}}" class="span5 hideOverflow">{{targetURL}}</a>
+                <span class="span1"> → </span>
+                <a href="{{getHostName}}/{{shortURL}}" class="span2 hideOverflow">{{getHostName}}/{{shortURL}}</a>
+                <a href="{{pathFor 'urlPage'}}" class="span1">{{pluralize numVisit 'visit'}}</a>
+
+            </div>
+
+            <br>
         {{/each}}
 
 
@@ -16,7 +21,7 @@
             <a href='{{loadMore}} {{! See the data definition in PublicURLsController}}'>Load more...</a>
         {{/if}}
 
-    </ul>
+    </div>
 
     {{else}}
 

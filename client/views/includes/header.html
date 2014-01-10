@@ -3,9 +3,9 @@
         <div class="navbar-inner">
 
             <ul class="nav">
-                <li class="{{isActive 'home'}}"><a href="#">Home</a></li>
-                {{#if currentUser}}<li class="{{isActive 'manage'}}"><a href="{{pathFor 'userPage'}}">Manage Your URLs</a> </li>{{/if}}
-                <li class="{{isActive 'publicList'}}"><a href="#">View Public URLs</a></li>
+                <li class="{{isActiveRoute 'home'}}"><a href="{{pathFor 'home'}}">Home</a></li>
+                {{#with defaultLimit}}<li class="{{isActiveRoute 'publicList'}}"><a href="{{pathFor 'publicList'}}">View Public URLs</a></li>{{/with}}
+                {{#if currentUser}}<li class="{{isActiveRoute 'userPage'}}"><a href="{{pathFor 'userPage'}}">Manage Your URLs</a> </li>{{/if}}
             </ul>
 
             <ul class="nav pull-right">
@@ -14,7 +14,5 @@
 
         </div>
     </header>
-
-    <h1 class="custom-headline">NP URL Shortener</h1>
 
 </template>

@@ -1,10 +1,11 @@
 <template name="home">
 
+    <h1 class="custom-headline">NP URL Shortener</h1>
 
-    <form>
+    <form id="mainForm">
 
         <div class="input-append">
-            <input name="longURL" class="input-xxlarge" type="text" placeholder="Enter your long URL here">
+            <input id="longURL" name="longURL" data-title="URL not valid" data-placement="left" data-trigger="manual" class="input-xxlarge" type="text" placeholder="Enter your long URL here">
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
 
@@ -12,7 +13,7 @@
 
             <div class="input-prepend">
                 <span class="add-on">→ {{getHostName}} / </span>
-                <input id="shortURLInput" name="shortURL" class="input-small" type="text" placeholder="  custom-url">
+                <input id="shortURLInput" name="shortURL" data-title="Short URL not valid" data-placement="bottom" data-trigger="manual" class="input-small" type="text" placeholder="  custom-url">
             </div>
 
 
@@ -35,13 +36,5 @@
         </div>
 
     </form>
-
-    <div class="publicURLBlock">
-        <div id="viewPublicURLs"><a href="{{loadMore}} {{! This's a function in my route definition}}">View Public URLs</a></div>
-
-        <div id="publicList" class="isHidden">
-            {{>publicList}}
-        </div>
-    </div>
 
 </template>

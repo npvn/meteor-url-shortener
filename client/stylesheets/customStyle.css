@@ -31,7 +31,7 @@ ul > li {
 .custom-headline {
     color: #1abc9c;
     font: 700 118px/1.1 "Helvetica Neue", Helvetica, Arial, sans-serif !important;
-    margin-top: 75px;
+    margin-top: 5px;
     margin-bottom: 35px;
     text-align: center;
     word-wrap: break-word;
@@ -41,7 +41,23 @@ ul > li {
     padding-right: 15px;
 }
 
+#contentContainer {
+    margin-top: 75px;
+}
 
+.hideOverflow {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.publicList {
+    margin-top: 20px;
+}
+
+.tooltip.left {
+    left: 10%;
+}
 
 /*
 .grid-block, .main, .post, .comments li, .comment-form {
