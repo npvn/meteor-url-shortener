@@ -1,8 +1,14 @@
 <template name="redirect">
     {{#if urlExist}}
-        Redirecting to {{targetURL}} ...
+        <div id="redirectText">
+            <div>Redirecting to:</div><br>
+            <div class="targetURL">{{targetURLQuery}}</div>
+            <div>{{>spinner}}</div>
+
+        </div>
+
     {{else}}
-        {{>notFound}}
+        <div id="redirectText">{{>notFound}}</div>
     {{/if}}
 
 </template>

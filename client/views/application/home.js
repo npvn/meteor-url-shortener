@@ -28,8 +28,7 @@ Template.home.events({
 
         if ( input === '' ) ; // skip the test
         else {
-            // See http://www.ietf.org/rfc/rfc3986.txt for reference
-            var validChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~:/?#[]@!$&'()*+,;=";
+            var validChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
             for (var i = 0; i < input.length; i++) {
                 if ( validChars.indexOf( input[i] ) === -1 ) {
                     urlValidationStatus = false;

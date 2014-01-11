@@ -1,17 +1,21 @@
 <template name="layout">
-    <div class="container">
 
-        {{>header}}
+        <div id="wrap">
 
-        <div id="contentContainer" class="container">
+            {{>header}}
 
-            {{yield}}
+            <div id="mainContent" class="container">
 
-            {{>meteorErrors}}
+                {{yield}}
+
+                {{>meteorErrors}}
+
+            </div>
+
+            <div id="push"></div>
+        </div>
 
             {{>footer}}
 
-        </div>
 
-    </div>
 </template>

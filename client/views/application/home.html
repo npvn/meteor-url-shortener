@@ -17,21 +17,17 @@
             </div>
 
 
-                <label class="checkbox inline myLabel">
-                    {{#if currentUser}}
-                        <input name="makePrivate" type="checkbox">Make private
-                    {{else}}
-                        <div id="checkboxTooltip" data-title="Please login to mark URL as private. Private URLs are not listed on homepage and their statistics can only be viewed by the creator." data-placement="right">
-                            <input name="makePrivate" type="checkbox" disabled>Make private
-                        </div>
+            <label class="checkbox inline myLabel">
+                {{#if currentUser}}
+                    <input name="makePrivate" type="checkbox">Make private
+                {{else}}
+                    <div id="checkboxTooltip" data-title="Please login to mark URL as private. Private URLs are not listed and their statistics can only be viewed by the creator." data-placement="right">
+                        <input name="makePrivate" type="checkbox" disabled>Make private
+                    </div>
 
+                {{/if}}
 
-
-                    {{/if}}
-
-                </label>
-
-
+            </label>
 
         </div>
 

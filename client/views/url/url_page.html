@@ -6,9 +6,9 @@
 
             {{#with urlData}}
 
-                <p>The following URL: {{targetURL}}</p>
-                <p>has been shortened to: {{getHostName}}/{{shortURL}}</p>
-                {{#if isOwnURL}}<p><a href="{{pathFor 'urlEdit'}}">Edit</a></p>{{/if}}
+                    <p><a href="{{targetURL}}">{{targetURL}}</a></p>
+                    <p>→ <a href="http://{{getHostName}}/{{shortURL}}">{{getHostName}}/{{shortURL}}</a></p>
+                    {{#if isOwnURL}}<p><a href="{{pathFor 'urlEdit'}}">Edit</a></p>{{/if}}
 
                 <div><br>
                     <h4>URL's statistics (updated in real-time)</h4>
