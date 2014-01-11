@@ -1,4 +1,42 @@
-urlValidationStatus = false;
+longURLValidationStatus = false;
+shortURLValidationStatus = false;
+
+setupTargetURLValidation = function() {
+    jQuery.validator.setDefaults({
+        success: "valid"
+    });
+
+    $( "#mainForm" ).validate({
+        rules: {
+            longURLInput: {
+                required: true,
+                url: true
+            }
+        }
+    });
+};
+
+
+executeShortURLValidation = function(e) {
+    shortURLValidationStatus = true;
+    $(e.target).val( $(e.target).val().trim() );
+    var input = $(e.target).val();
+
+    if ( input === '' ) ; // skip the test
+    else {
+        var validChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        for (var i = 0; i < input.length; i++) {
+            if ( validChars.indexOf( input[i] ) === -1 ) {
+                shortURLValidationStatus = false;
+                $(e.target).tooltip('show');
+                break;
+            }
+        }
+
+        if (shortURLValidationStatus) $(e.target).tooltip('hide');
+    }
+};
+
 
 /*!
  * jQuery Validation Plugin 1.11.1
@@ -689,12 +727,12 @@ urlValidationStatus = false;
 
 
                 if ( message ) {
-                    urlValidationStatus = false;
+                    longURLValidationStatus = false;
                     $(element).tooltip('show');
                 }
 
                 else if ( this.settings.success ) {
-                    urlValidationStatus = true;
+                    longURLValidationStatus = true;
                     $(element).tooltip('hide');
                 }
 

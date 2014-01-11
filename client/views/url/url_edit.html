@@ -1,10 +1,26 @@
 <template name="urlEdit">
     {{#if isOwnURL}}
-    <form>
-        <p>URL: {{getHostName}}/<input name="shortURL" class="input-small" type="text" value="{{shortURL}}"></p>
-        <p>Target: <input name="targetURL" class="input-xxlarge" type="text" value="{{targetURL}}"> </p>
-        <p>Make private: <input name="makePrivate" type="checkbox" {{isChecked}}></p>
-        <button type="submit" class="btn">Update</button>
+    <form id="mainForm" class="middleBlock">
+
+        <input id="longURLInput" name="longURLInput" data-title="URL not valid" data-placement="left" data-trigger="manual" class="input-xxlarge" type="text" value="{{targetURL}}">
+
+        <div class="control-group form-inline">
+
+            <div class="input-prepend">
+                <span class="add-on">→ {{getHostName}} / </span>
+                <input id="shortURLInput" name="shortURLInput" data-title="Short URL not valid" data-placement="bottom" data-trigger="manual" class="input-small" type="text" value="{{shortURL}}">
+            </div>
+
+            <label class="checkbox inline myLabel">
+                <input name="makePrivate" type="checkbox" {{isChecked}}>Make private
+            </label>
+
+        </div>
+
+        <br>
+
+        <button type="submit" class="btn btn-primary">Update</button>
+
     </form>
 
     {{else}}

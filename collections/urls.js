@@ -24,7 +24,7 @@ Meteor.methods({
        // If user has chosen a short url
        if (urlAttributes.shortURL) {
            // Check if the chosen short url is unique
-           if ( URLs.findOne({ shortURL: urlAttributes.shortURL }) || _.contains( getReservedPaths(), urlAttributes.shortURL ) ) throw new Meteor.Error(302, 'The chosen URL is not available.')
+           if ( URLs.findOne({ shortURL: urlAttributes.shortURL }) || _.contains( getReservedPaths(), urlAttributes.shortURL ) ) throw new Meteor.Error(302, 'The chosen short URL is not available.')
            else var shortURL = urlAttributes.shortURL;
        // If not, generate a random string
        } else {
@@ -61,7 +61,7 @@ Meteor.methods({
         // If user choose another shortURL
         else if (urlAttributes.shortURL !== currentShortURL) {
             // Check if the chosen short url is unique
-            if ( URLs.findOne({ shortURL: urlAttributes.shortURL }) || _.contains( getReservedPaths(), urlAttributes.shortURL ) ) throw new Meteor.Error(302, 'The chosen URL is not available.')
+            if ( URLs.findOne({ shortURL: urlAttributes.shortURL }) || _.contains( getReservedPaths(), urlAttributes.shortURL ) ) throw new Meteor.Error(302, 'The chosen short URL is not available.')
             else shortURL = urlAttributes.shortURL;
         // If user leave the shortURL empty
         } else {

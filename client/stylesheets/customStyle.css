@@ -75,6 +75,19 @@ p.publicList {
     top: 30px;
 }
 
+.middleBlockTextCenter {
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.middleBlock {
+    width: 812px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 
 /* Footer css */
 
