@@ -45,10 +45,20 @@
     overflow: hidden;
 }
 
-.publicList {
+.publicList, .userURLList {
     width: 900px;
     margin: 0 auto;
     margin-bottom: 120px;
+}
+
+.userURLList {
+    width: 1000px;
+    margin: 0 auto;
+    margin-bottom: 120px;
+}
+
+#privateOrPublic.private {
+    color: #2ecc71;
 }
 
 /* For the paragraph displayed when there's no public URL */

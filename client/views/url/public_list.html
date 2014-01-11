@@ -3,25 +3,25 @@
     {{#if publicURLsExist}}
 
 
-    <div class="publicList">
-        {{#each publicURLs}} {{! publicURLs is the object that holds all docs - defined in my router data code}}
-            <div class="row">
-                <a href="{{targetURL}}" class="span5 hideOverflow">{{targetURL}}</a>
-                <span class="span1"> → </span>
-                <a href="http://{{getHostName}}/{{shortURL}}" class="span2 hideOverflow">{{getHostName}}/{{shortURL}}</a>
-                <a href="{{pathFor 'urlPage'}}" class="span1">{{pluralize numVisit 'visit'}}</a>
+        <div class="publicList">
+            {{#each publicURLs}} {{! publicURLs is the object that holds all docs - defined in my router data code}}
+                <div class="row">
+                    <a href="{{targetURL}}" class="span5 hideOverflow">{{targetURL}}</a>
+                    <span class="span1"> → </span>
+                    <a href="http://{{getHostName}}/{{shortURL}}" class="span2 hideOverflow">{{getHostName}}/{{shortURL}}</a>
+                    <a href="{{pathFor 'urlPage'}}" class="span1">{{pluralize numVisit 'visit'}}</a>
 
-            </div>
+                </div>
 
-            <br>
-        {{/each}}
+                <br>
+            {{/each}}
 
 
-        {{#if hasMorePublicURLs}}
-            <a id="loadmoreButton" class="btn" href='{{loadMore}} {{! See the data definition in PublicURLsController}}'>Load more...</a>
-        {{/if}}
+            {{#if hasMorePublicURLs}}
+                <a id="loadmoreButton" class="btn" href='{{loadMore}} {{! See the data definition in PublicURLsController}}'>Load more...</a>
+            {{/if}}
 
-    </div>
+        </div>
 
     {{else}}
 

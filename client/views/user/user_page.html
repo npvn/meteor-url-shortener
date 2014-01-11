@@ -2,24 +2,30 @@
     {{#if currentUser}}
 
         {{#if hasURL}}
-            Your URLs:
-            <ul>
+
+            <div class="userURLList">
                 {{#each this}}
-                    <li>
-                        <p>URL: {{getHostName}}/{{shortURL}}</p>
-                        <p>Target: {{targetURL}}</p>
-                        <p>Number of visit: {{numVisit}}</p>
-                        <p>Private: {{makePrivate}}</p>
-                        <a href="{{pathFor 'urlEdit'}}">Edit</a>
-                    </li>
+                    <div class="row">
+                        <a href="{{targetURL}}" class="span4 hideOverflow">{{targetURL}}</a>
+                        <span class="span1"> → </span>
+                        <a href="http://{{getHostName}}/{{shortURL}}" class="span2 hideOverflow">{{getHostName}}/{{shortURL}}</a>
+                        <span id="privateOrPublic" class="span1 {{privateOrPublic}}">({{privateOrPublic}})</span>
+                        <a href="{{pathFor 'urlPage'}}" class="span1">{{pluralize numVisit 'visit'}}</a>
+                        <a href="{{pathFor 'urlEdit'}}" class="span1">Edit</a>
+
+                    </div>
+
+                    <br>
                 {{/each}}
-            </ul>
+            </div>
 
         {{else}}
-            You haven't created any URL.
+            <p class="middleBlockTextCenter">You haven't created any URL.</p>
         {{/if}}
 
     {{else}}
-        Please login to view details of your URLs.
+        <p class="middleBlockTextCenter">Please login to view details of your URLs.</p>
     {{/if}}
 </template>
+
+

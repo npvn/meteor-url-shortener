@@ -1,5 +1,5 @@
 longURLValidationStatus = false;
-shortURLValidationStatus = false;
+shortURLValidationStatus = true;
 
 setupTargetURLValidation = function() {
     jQuery.validator.setDefaults({
