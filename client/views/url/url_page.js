@@ -9,18 +9,42 @@ Template.urlPage.helpers({
         return this.userId && this.userId === Meteor.userId();
    },
 
-   getStatistics: function(category) {
-       var result = aggregateStatistics( Visits.find(), category );
-       return result;
+   displayChart: function(category) {
+        nv.addGraph(function() {
+            var width = 270,
+                height = 270;
+
+            var chart = nv.models.pieChart()
+                .x(function(d) { return d.key; })
+                .y(function(d) { return d.y; })
+                .color(d3.scale.category10().range())
+                .width(width)
+                .height(height)
+                .showLegend(false)
+                .valueFormat(d3.format('d'));
+
+            d3.select('#' + category + 'Stats' + ' svg')
+                .datum(aggregateStatistics(Visits.find(), category))
+                .transition().duration(1200)
+                .attr('width', width)
+                .attr('height', height)
+                .call(chart);
+
+            //chart.dispatch.on('stateChange', function(e) { nv.log('New State:', JSON.stringify(e)); });
+
+            return chart;
+        });
    },
 
-   printStatistics: function(item) {
+
+
+  /*printStatistics: function(item) {
        var numVisit = URLs.findOne({ shortURL: Router.current().params.shortURL }).numVisit;
 
        for (prop in item) // this one-time iteration is to get the prop name
            return prop + ': ' + item[prop] + ' (' + ( (item[prop]/numVisit)*100 ).toFixed(1) + '%)';
 
-   },
+   },*/
 
    render404: function() {
        Router.current().render('notFound');
