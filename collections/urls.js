@@ -28,7 +28,7 @@ Meteor.methods({
            else var shortURL = urlAttributes.shortURL;
        // If not, generate a random string
        } else {
-           var numberOfDigits = getRandomInt(3, 9);
+           var numberOfDigits = getRandomInt(3, 6);
            var shortURL = Random.hexString(numberOfDigits);
            // Make sure it is unique
            while ( URLs.findOne({ shortURL: shortURL}) || _.contains( getReservedPaths(), shortURL ) ) shortURL = Random.hexString(numberOfDigits);

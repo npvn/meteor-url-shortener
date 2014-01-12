@@ -45,6 +45,17 @@
     overflow: hidden;
 }
 
+.nonBreakingLongText {
+    width: 900px;
+}
+
+#urlMainBlock {
+    width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
 .publicList, .userURLList {
     width: 900px;
     margin: 0 auto;
@@ -102,6 +113,35 @@ p.publicList {
     text-align: center;
 }
 
+.shortURLStandOut {
+    background-color: rgb(245, 245, 245);
+    border: 3px solid teal;
+    color: rgb(17, 85, 204);
+    font-family: arial,sans-serif;
+    font-size: 21px;
+    font-weight: bold;
+    height: 40px;
+    text-align: center;
+    width: 310px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.shortURLStandOutLink {
+    height: 40px;
+    line-height: 40px;
+}
+
+#statisticsBlock, #statisticsCharts {
+    margin-left: auto;
+    margin-right: auto;
+    width: 900px;
+    text-align: center;
+}
+
+h4#statisticsBlock {
+    text-align: center;
+}
 
 /* Footer css */
 
