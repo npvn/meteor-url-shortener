@@ -1,9 +1,5 @@
 Handlebars.registerHelper('getHostName', function() {
-    var a = document.createElement('a');
-    a.href = '/';
-    var host = a.host;
-    $(a).remove();
-    return host; // a.hostname === 'localhost' ? a.hostname+':3000' : a.hostname;
+    return window.location.host;
 });
 
 Handlebars.registerHelper('pluralize', function(n, thing) {
