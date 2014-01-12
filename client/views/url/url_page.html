@@ -5,36 +5,37 @@
         {{#if canBeDisplayed}}
 
             {{#with urlData}}
+                <div id="urlMainBlock">
+                       <p class="hideOverflow nonBreakingLongText">The URL <a href="{{targetURL}}">{{targetURL}}</a></p>
+                       <p>is shortened to:</p>
+                       <p class="shortURLStandOut"><span class="shortURLStandOutLink">{{getHostName}}/{{shortURL}} </span><span class="clippy">http://{{getHostName}}/{{shortURL}}</span> </p>
+                       {{#if isOwnURL}}<p><a href="{{pathFor 'urlEdit'}}">Edit</a></p>{{/if}}
+                </div>
 
-                    <p><a href="{{targetURL}}">{{targetURL}}</a></p>
-                    <p>→ <a href="http://{{getHostName}}/{{shortURL}}">{{getHostName}}/{{shortURL}}</a></p>
-                    {{#if isOwnURL}}<p><a href="{{pathFor 'urlEdit'}}">Edit</a></p>{{/if}}
+                <div id="statisticsBlock"><br>
 
-                <div><br>
-                    <h4>URL's statistics (updated in real-time)</h4>
-                    Total visits: <strong>{{numVisit}}</strong>
                     <br>
-                    <br>
+                    <h4>Total visits: <strong>{{numVisit}} (Updated in real-time)</strong></h4>
                     <br>
             {{/with}}
 
-                <div class="row">
+                    <div id="statisticsCharts" class="row">
 
-                    <div class="span3 centerText"><strong>By browser</strong>
-                        <div id="browserStats"><svg class="mypiechart"></svg>{{displayChart 'browser'}}</div>
-                    </div>
+                        <div class="span3 centerText"><strong>By browser</strong>
+                            <div id="browserStats"><svg class="mypiechart"></svg>{{displayChart 'browser'}}</div>
+                        </div>
 
-                    <div class="span3 centerText"><strong>By OS</strong>
-                        <div id="osStats"><svg class="mypiechart">{{displayChart 'os'}}</svg></div>
-                    </div>
+                        <div class="span3 centerText"><strong>By OS</strong>
+                            <div id="osStats"><svg class="mypiechart">{{displayChart 'os'}}</svg></div>
+                        </div>
 
-                    <div class="span3 centerText"><strong>By country</strong>
-                        <div id="countryStats"><svg class="mypiechart">{{displayChart 'country'}}</svg></div>
+                        <div class="span3 centerText"><strong>By country</strong>
+                            <div id="countryStats"><svg class="mypiechart">{{displayChart 'country'}}</svg></div>
+                        </div>
+
                     </div>
 
                 </div>
-
-            </div>
 
         {{else}}
 

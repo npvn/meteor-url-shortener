@@ -36,17 +36,13 @@ Template.urlPage.helpers({
         });
    },
 
-
-
-  /*printStatistics: function(item) {
-       var numVisit = URLs.findOne({ shortURL: Router.current().params.shortURL }).numVisit;
-
-       for (prop in item) // this one-time iteration is to get the prop name
-           return prop + ': ' + item[prop] + ' (' + ( (item[prop]/numVisit)*100 ).toFixed(1) + '%)';
-
-   },*/
-
    render404: function() {
        Router.current().render('notFound');
    }
 });
+
+
+Template.urlPage.rendered = function() {
+    $('.clippy').clippy();
+    selectText('shortURL');
+};
