@@ -4,13 +4,6 @@
 # but you can also edit it by hand.
 
 standard-app-packages
-insecure
 preserve-inputs
+fast-render
 accounts-password
-errors
-random
-iron-router-progress
-meteor-accounts-ui-bootstrap-dropdown
-iron-router
-meteor-spin
-meteor-fast-render
