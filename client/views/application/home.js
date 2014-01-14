@@ -11,7 +11,7 @@ Template.home.events({
                 makePrivate: $(e.target).find('[name=makePrivate]').is(':checked')
             }
 
-            Meteor.call('submitURL', url, function(error, result) {
+            Meteor.call('submitURL', url, extractHost(url.targetURL), function(error, result) {
                 if (error) Errors.throw(error.reason);
                 else Router.go('urlPage', {shortURL: result}); // go the the page listing url details
             });
