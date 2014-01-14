@@ -44,5 +44,4 @@ Template.urlPage.helpers({
 
 Template.urlPage.rendered = function() {
     $('.clippy').clippy();
-    selectText('shortURL');
 };
