@@ -1,9 +1,9 @@
-
+// Will be fired as callback for a JSONP request (see Template.redirect.rendered event)
 trackInfoAndRedirect = function(jsonpData) {
     var agent = navigator.userAgent;
     var currentData = URLs.findOne();
 
-    // Very basic browser info recording
+    // Very basic (and not totally accurate) browser info recording
     var browser;
     if ( agent.indexOf('Firefox') >= 0 ) browser = 'Firefox';
     else if ( agent.indexOf('Chrome') >= 0 ) browser = 'Chrome';
