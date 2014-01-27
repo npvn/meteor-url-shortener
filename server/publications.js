@@ -13,6 +13,9 @@ Meteor.publish('publicURLs', function(limit) {
 });
 
 
-Meteor.publish('urlStatistics', function(shortURL) {
-   return Visits.find({ shortURL: shortURL });
+Meteor.publish('urlDataAndStatistics', function(shortURL) {
+   return [
+       URLs.find({ shortURL: shortURL}),
+       Visits.find({ shortURL: shortURL })
+   ]
 });
