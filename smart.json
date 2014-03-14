@@ -1,5 +1,10 @@
 {
   "packages": {
-
+    "iron-router": {},
+    "iron-router-progress": {},
+    "accounts-ui-bootstrap-dropdown": {},
+    "spin": {},
+    "errors": {},
+    "fast-render": {}
   }
 }

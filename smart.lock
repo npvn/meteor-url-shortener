@@ -1,7 +1,45 @@
 {
   "meteor": {},
   "dependencies": {
-    "basePackages": {},
-    "packages": {}
+    "basePackages": {
+      "iron-router": {},
+      "iron-router-progress": {},
+      "accounts-ui-bootstrap-dropdown": {},
+      "spin": {},
+      "errors": {},
+      "fast-render": {}
+    },
+    "packages": {
+      "iron-router": {
+        "git": "https://github.com/EventedMind/iron-router.git",
+        "tag": "v0.6.4",
+        "commit": "927bbaed1b87894fb6fb70807f74ff3a5bd89f29"
+      },
+      "iron-router-progress": {
+        "git": "https://github.com/Multiply/iron-router-progress.git",
+        "tag": "v0.2.0",
+        "commit": "ce730d1d26feadb7c75ea25f22c5bfdb0c549a8b"
+      },
+      "accounts-ui-bootstrap-dropdown": {
+        "git": "https://github.com/erobit/meteor-accounts-ui-bootstrap-dropdown.git",
+        "tag": "v0.6.5.1",
+        "commit": "c8b29d2e7f8611d6dec9d6d23c1c2b94e000b0fb"
+      },
+      "spin": {
+        "git": "https://github.com/SachaG/meteor-spin.git",
+        "tag": "v0.2.2",
+        "commit": "3f655f0016228e4195acc784c45d3e3a247dc39f"
+      },
+      "errors": {
+        "git": "https://github.com/tmeasday/meteor-errors.git",
+        "tag": "v0.2.0",
+        "commit": "b7cc525c19defe2dc744e8e34d1328b430f3e03a"
+      },
+      "fast-render": {
+        "git": "https://github.com/arunoda/meteor-fast-render.git",
+        "tag": "v0.1.18",
+        "commit": "dbfc8178594e5f696a39541278aac5dd25d458a0"
+      }
+    }
   }
 }

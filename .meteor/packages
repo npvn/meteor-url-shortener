@@ -6,10 +6,10 @@
 standard-app-packages
 preserve-inputs
 accounts-password
-errors
 random
-iron-router-progress
-meteor-accounts-ui-bootstrap-dropdown
 iron-router
-meteor-spin
-meteor-fast-render
+iron-router-progress
+accounts-ui-bootstrap-dropdown
+spin
+fast-render
+errors
