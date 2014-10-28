@@ -1,4 +1,4 @@
-Template.home.events({
+Template.Home.events({
 
 
     'submit form': function(e) {
@@ -11,7 +11,7 @@ Template.home.events({
                 makePrivate: $(e.target).find('[name=makePrivate]').is(':checked')
             }
 
-            Meteor.call('submitURL', url, extractHost(url.targetURL), function(error, result) {
+            Meteor.call('/url/submit', url, extractHost(url.targetURL), function(error, result) {
                 if (error) Errors.throw(error.reason);
                 else Router.go('urlPage', {shortURL: result}); // go the the page listing url details
             });
@@ -30,7 +30,7 @@ Template.home.events({
 
 
 
-Template.home.rendered = function() {
+Template.Home.rendered = function() {
     $('#shortURLInput').val(''); // bug fix: switching from 'urlEdit' to 'home' see the previous shortURL in short URL input form
     setupTargetURLValidation();
 };
