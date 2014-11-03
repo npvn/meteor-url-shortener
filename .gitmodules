@@ -1,1 +1,5 @@
 
+[submodule "client/lib/meteor-material-design"]
+	path = client/lib/meteor-material-design
+	url = git@bitbucket.org:npvn/meteor-material-design.git
+	branch = devel
