@@ -1,0 +1,25 @@
+#url-form {
+    margin-top: 50px;
+    #targetURL {
+        margin-bottom: 50px;
+    }
+    .form-inline {
+        margin-bottom: 50px;
+        #shortURL {
+            input[name='shortURL'] {
+                width: 128px;
+            }
+        }
+        #isPrivate {
+            vertical-align: baseline;
+            input:disabled + span.check {
+                cursor: not-allowed;
+            }
+        }
+    }
+}
+
+button[form='url-form'] {
+    background-color: @accent !important;
+    margin-bottom: 70px;
+}

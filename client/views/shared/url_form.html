@@ -1,0 +1,27 @@
+<template name="URLForm">
+    {{#autoForm collection='URLs' id='url-form' data-url-id=_id}}
+        <div id="targetURL" class="form-group {{#if afFieldIsInvalid name='targetURL'}}has-error{{/if}}">
+            {{> 
+                afFieldInput name='targetURL' class='form-control floating-label' 
+                placeholder='Paste your long URL here' value=targetURL 
+            }}
+        </div>
+        <div class="form-inline">
+            <div id="shortURL" class="form-group {{#if afFieldIsInvalid name='shortURL'}}has-error{{/if}}">
+                {{>
+                    afFieldInput name='shortURL' class='form-control floating-label'
+                    placeholder='Custom short link' value=shortURL
+                }}
+            </div>    
+            <div id="isPrivate" class="form-group" data-toggle="tooltip" data-placement="right" data-original-title="{{tooltip}}">
+                {{#if currentUser}}
+                    {{> afFieldInput name='isPrivate'}}
+                {{else}}
+                    {{> afFieldInput name='isPrivate' disabled=''}}
+                {{/if}}                                
+            </div>                       
+        </div>             
+    {{/autoForm}}
+    
+    {{updateFloatingLabels}}
+</template>

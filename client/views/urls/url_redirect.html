@@ -1,14 +1,16 @@
-<template name="URLRedirect">
-    {{#if urlExist}}
-        <div id="redirectText">
-            <div>Redirecting to:</div><br>
-            <div class="targetURL">{{targetURLQuery}}</div>
-            <div>{{>spinner}}</div>
-
-        </div>
-
+<template name="UrlRedirect">     
+    {{#unless shortURL}}
+        {{> NotFound}}
     {{else}}
-        <div id="redirectText">{{>notFound}}</div>
-    {{/if}}
-
+        {{#if accessible}}
+            <div id="url-redirect">
+                <p>Redirecting to:</p>
+                <p class="hide-overflow" title="{{targetURL}}">{{targetURL}}</p>
+                <p>{{> Loading}}</p>               
+                {{redirect}}
+            </div>
+        {{else}}
+            <p class="notification-text">This link is private. Only the owner can access it.</p>
+        {{/if}}
+    {{/unless}}    
 </template>

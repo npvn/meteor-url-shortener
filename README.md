@@ -3,16 +3,35 @@ Intro
 
 A URL shortening service built with Meteor.
 
-List of Features
+This is a hobby project I did to harden my Meteor skills and play around 
+with [Material Design](https://github.com/npvn/meteor-material-design).
+
+I hope this project will be a good reference for new Meteor learners. Suggestions for 
+improvement (on code structure, UI, UX and anything else) are very welcomed!
+
+Features
 ==============
 
-- User account system: Logged in users can manage their previously-created URLs.
+- URLs management: Registered users can manage their previously-created URLs and 
+mark a URL as private.
 
-- List of recently-created public URLs.
+- Secured pub/sub pattern to protect private URLs.
 
-- URL input validation.
+- Sever-side routing for faster URL redirection. If the requested URL is private,
+the app will switch to client-side routing for user authentication.
 
-- Visits tracking for each short URL with real-time statistics update. This functionality is still very basic: number of visits by browser, OS, or country, and is not 100% accurate due to the dependence on user-agent.
+- URL schema for data integrity  (using the awesome `aldeed:collection2` package).
+
+- Real-time statistical tracking including number of visits by browser, OS and country.
+
+- UI & UX inspired by the awesome [Material Design](https://github.com/npvn/meteor-material-design) guideline from Google.
+
+Todo
+==============
+
+- Make the svg charts responsive when viewport is resized.
+
+- Allow users to protect URLs by password.
 
 License
 ==============

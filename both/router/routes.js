@@ -6,85 +6,49 @@ Router.configure({
 	, layoutTemplate: 'MasterLayout'
 });
 
-//Any function that is related to routes, are going to be in Router namespace.
 
-Router.mustBeLoggedIn = function () {
-	if(!Meteor.user()) {
-		this.redirect("home");
-	}
-};
-
-Router.mustNotBeLoggedIn = function () {
-	if(Meteor.user()) {
-		this.redirect("home");
-	}
-};
-
-Router.mustBeAdmin = function() {
-	if(!Users.isAdmin(Meteor.userId())){
-		this.redirect("home");
-	}
-};
-
-if (Meteor.isClient) {
-	var publicRoutes = ['home'];
-	Router.onBeforeAction(Router.mustBeLoggedIn, {except: publicRoutes});
-
-	var loginAndRegistrationRoutes = [];
-	Router.onBeforeAction(Router.mustNotBeLoggedIn, {only: loginAndRegistrationRoutes});
-
-	var adminRoutes = [];
-	Router.onBeforeAction(Router.ensureAccountIsAdmin, {only: adminRoutes});
-}
-
-// We want here to be a table of content for routes. All of the other stuff
-// will be put into individual controller files.
+// For data configuration, see /client/controllers
 Router.map(function () {
-    
-    /* XXX TODO: Change the list below into single-line list. Only path is enough,
-       controller and template are automatically detected based on naming scheme
-    */
-    
     this.route('home', {path: '/'});
-
-    this.route('publicList', {
-        path: '/publicList/:limit?',
-        template: 'publicList',
-        controller: PublicURLsController
-    });
-
-    this.route('urlPage', {
-        path: '/view/:shortURL',
-        data: function() {
-            return {
-                urlData: URLs.findOne(),
-                urlStatistics: Visits.find()
-            }
-        },
-        waitOn: function() {
-            return Meteor.subscribe('urlData', this.params.shortURL);
-        }
-    });
-
-    this.route('userPage', {
-        path: '/manage',
-        //userId: Meteor.userId(), // this is not possible, I can't user userId() here, so...
-        data: function() { return URLs.find( {}, {sort:{timeModified: -1, timeCreated: -1}}); }, // user find() here since I have already filer the result set from publication code
-        waitOn: function() { return Meteor.subscribe('userURLs' /*, this.userId*/ ); } // ... I can't pass userId to publication this way (I must user 'this.userId' in the publication code
-    });
-
-    this.route('urlEdit', {
-        path: '/edit/:shortURL',
-        controller: urlEditURLController
-    });
-
-    this.route('redirect', {
-        path: '/:shortURL',
-        controller: URLRedirectController
-    });
+    this.route('url.show', {path: '/show/:shortURL'});
+    this.route('url.edit', {path: '/edit/:shortURL'});
+    this.route('url.redirect', {path: '/redirect/:shortURL'});
+    this.route('user.url.index', {path: '/user/urls/:limit?'});
+    this.route('public.url.index', {path: '/public/:limit?'});
+    this.route('not.found', {path: '/url/not-found'});
 });
 
 
-Router.before(function() {
-    Errors.clearSeen();
-});
+// Server side routing (for faster URL redirection)
+// If :shortURL is a private link, we'll switch to client-side redirection 
+// since user authorization is needed
+Router.route('/:shortURL', function () {
+    var request = this.request
+        , response = this.response
+        , url = URLs.findOne({shortURL: this.params.shortURL})    
+        , location;
+    
+    // Not found
+    if (!url) location = Router.path('not.found');
+    
+    // For private links, go to client side to authorize the requester 
+    else if (url.isPrivate) location = Router.path('url.redirect', {shortURL: url.shortURL});
+    
+    // For public links, record statistical data and process redirection
+    else {               
+        var clientIP = (request.headers['x-forwarded-for'] || '').split(',')[0]
+                       || request.connection.remoteAddress
+                       || request.socket.remoteAddress
+                       || request.connection.socket.remoteAddress      
+            
+            , userAgent = request.headers['user-agent'];
+                
+        // Record statistical data
+        Meteor.call('/visit/insert', url.shortURL, clientIP, userAgent);
+        
+        location = url.targetURL;
+    }
+           
+    response.writeHead(302, {'Location': location});    
+    response.end();
+}, {where: 'server'});

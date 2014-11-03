@@ -1,3 +1,3 @@
-Meteor.publish('userURLs', function() {
-    return URLs.find({ userId: this.userId });
+Meteor.publish('userURLs', function(limit) {
+    return URLs.find({userId: this.userId}, {limit: limit});
 });

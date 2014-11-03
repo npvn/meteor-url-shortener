@@ -1,7 +1,7 @@
-
 App.subs = {
-  userData: Meteor.subscribe('current_user_data')
+    userData: Meteor.subscribe('current_user_data')
 };
+
 
 // App admin code like Meteor.startup or 
 // Deps.autorun will stay in this file
@@ -9,111 +9,136 @@ Deps.autorun(function() {
   
 });
 
+
 App.login = function (email, password, cb) {
 
-  onLogin = function (err) {
-    cb && cb(err);
-  };
+    onLogin = function (err) {
+        cb && cb(err);
+    };
 
-  Meteor.loginWithPassword(email, password, onLogin);
+    Meteor.loginWithPassword(email, password, onLogin);
 };
 
 
 App.logout = function (cb) {
-  var onLogout = function (err) {
-    if (cb){
-      cb(err);
-    }else{
-      Router.go('home');
-    }
-  };
+    var onLogout = function (err) {
+        if (cb){
+            cb(err);
+        }else{
+            Router.go('home');
+        }
+    };
 
-  Meteor.logout(onLogout);
+    Meteor.logout(onLogout);
 };
 
-// Will be fired as callback for a JSONP request (see Template.redirect.rendered event)
-App.trackInfoAndRedirect = function(jsonpData) {
-    var agent = navigator.userAgent;
-    var currentData = URLs.findOne();
 
-    // Very basic (and not totally accurate) browser info recording
-    var browser;
-    if ( agent.indexOf('Firefox') >= 0 ) browser = 'Firefox';
-    else if ( agent.indexOf('Chrome') >= 0 ) browser = 'Chrome';
-    else if ( agent.indexOf('Safari') >= 0 && agent.indexOf('Chrome') < 0 ) browser = 'Safari';
-    else if ( agent.indexOf('Opera') >= 0 ) browser = 'Opera';
-    else if ( agent.indexOf('Trident') >= 0 ) browser = 'IE';
-    else browser = 'Others';
+App.displayChart = function(category) {    
+    nv.addGraph(function() {        
+        var width
+            , height                        
+            , statistics = App.aggregateData(Visits.find({
+                               shortURL: Router.current().params.shortURL
+                           }), category);
+        
+        // XXX TODO Make the charts responsive by automatically redraw them
+        // XXX on viewport resize event
+        width = height = $('.col-sm-4').width() * (95/100);
 
-    var os;
-    if ( agent.indexOf('Win') >= 0 ) os = 'Windows';
-    else if ( agent.indexOf('Mac') >= 0 ) os = 'MacOS';
-    else if ( agent.indexOf('X11') >= 0 ) os = 'Unix';
-    else if ( agent.indexOf('Linux') >= 0 ) os = 'Linux';
-    else os = 'Others';
+        var chart = nv.models.pieChart()
+            .x(function(d) { return d.key; })
+            .y(function(d) { return d.y; })
+            .showLabels(true)
+            .labelThreshold(.05)
+            .labelType("key")
+            .color( d3.scale.category10().range().slice().splice(2) )
+            .width(width)
+            .height(height)
+            .showLegend(false)
+            .donut(true)
+            .donutRatio(0.35)
+            .valueFormat(d3.format('d'));
 
-
-    if ( currentData && (!_.contains(getReservedPaths(), currentData.shortURL)) ) { // if user trying to access a non-existent shortURL, currentData will be undefined
-
-        // Add new tracking record Visits db
-        Visits.insert( {
-            shortURL: currentData.shortURL,
-            browser: browser,
-            os: os,
-            country: jsonpData.countryCode ? jsonpData.countryCode : 'Unknown'
-        } );
-
-        // Update numVisit in URLs collection, then process redirection
-        // Since I have set the current URLs data context to be reactive, I have to use a server-side method do this
-        Meteor.call('/url/visitCount/update', currentData._id , function(error, result) {
-            if (error) Errors.throw(error.reason);
-            else window.location = currentData.targetURL;
-        });
-    }
+        d3.select('#' + category + '-chart' + ' svg')
+            .datum(statistics)
+            .transition().duration(1000)
+            .attr('width', width)
+            .attr('height', height)
+            .call(chart);
+        
+        // Reset previous chart title before inserting a new one
+        $('#' + category + '-chart svg text').filter('[is-chart-title]').remove();
+        d3.select('#' + category + '-chart' + ' svg')
+            .append("text")
+            .attr("x", width/2)
+            .attr("y", _.isEmpty(statistics) ? height/3 : height/2 + 10)
+            .attr("text-anchor", "middle")
+            .attr("is-chart-title", true)                
+            .style("font-weight", "bold")
+            .text( 'By ' + (category === 'os' ? 'OS' : category.charAt(0).toUpperCase() + category.slice(1)) );
+        
+        return chart;
+    });
 };
 
-App.aggregateStatistics = function(cursor, fieldName) {
+
+// Generate an array of aggregated data for a given category
+App.aggregateData = function(cursor, category) {
     var resultObj = { }; // e.g. {Firefox: 3, Chrome: 6, IE: 1}
-    var resultArray = [ ]; // e.g. [ {Firefox: 3}, {Chome: 6}, {IE: 1} ]
+    var resultArray = [ ]; // e.g. [ {Firefox: 3}, {Chrome: 6}, {IE: 1} ]
 
+    // Populate resultObj
     cursor.forEach(function(doc) {
-        var statisticsItem = doc[fieldName]; // e.g. for fieldName = 'browser', statisticsItem = 'Firefox'
-        if ( resultObj[statisticsItem] ) resultObj[statisticsItem]++;
-        else resultObj[statisticsItem] = 1;
+        var value = doc[category]; // e.g. category = 'browser', value = 'Firefox'
+        if ( resultObj[value] ) resultObj[value]++;
+        else resultObj[value] = 1;
     });
 
-
-    for (prop in resultObj) {
-        var tempObj = { };
-        tempObj.key = prop; // have to do this, since I can't resultArray.push( {prop: resultObj[prop]} ) - the field name will end up being 'prop'
-        tempObj.y = resultObj[prop];
-        resultArray.push( tempObj );
+    // Populate resultArray
+    for (var prop in resultObj) {
+        var obj = { };
+        obj.key = prop;
+        obj.y = resultObj[prop];
+        resultArray.push(obj);
     }
 
     return resultArray;
-
-};
-
-extractHost = function(targetURL) {
-    var tempElement = document.createElement('a');
-    tempElement.href = targetURL;
-    setTimeout(function() { $(tempElement).remove(); }, 2000);
-    return tempElement.host;
 };
 
 
-//Global Helpers are also in here!
+App.extractHost = function(targetURL) {
+    var el = document.createElement('a');
+    el.href = targetURL;
+    setTimeout(function() { $(el).remove(); }, 1000);
+    return el.host;
+};
+
+
+App.isKeyInvalid = function(keyName) {
+    // Array of invalid keys - a reactive data-source
+    var invalidKeys = AutoForm.getValidationContext('url-form').invalidKeys();
+    
+    return _.any(invalidKeys, function(key) {
+        return key.name === keyName;
+    });
+};
+
+
+//Global Helpers
 Helpers = {};
+
 
 Helpers.getHostName = function() {
     return window.location.host;
 };
+
 
 Helpers.pluralize = function(n, thing) {
     if (n === 0) return '0 ' + thing;
     else if (n === 1) return '1 ' + thing;
     else return n + ' ' + thing + 's'
 };
+
 
 _.each(Helpers, function (helper, key) {
     Handlebars.registerHelper(key, helper)

@@ -1,23 +1,17 @@
 <template name="MasterLayout">
+    <head>
+        <title>URL Shortener</title>
+    </head>
 
-    <head><title>NP URL Shortener</title></head>
+    {{> Header}}
+    
+    <div class="container">
+        {{> yield}}
 
-    <div id="wrap">
-
-        {{>Header}}
-
-        <div id="mainContent" class="container">
-
-            {{yield}}
-
-            <div class="middleBlock">{{>meteorErrors}}</div>
-
+        <div id="snackbar" class="{{uiClass}}">
+            {{{notification}}}
         </div>
-
-        <div id="push"></div>
-
     </div>
-
-    {{>Footer}}
-
+    
+    {{> Footer}}    
 </template>

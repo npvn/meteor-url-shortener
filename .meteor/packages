@@ -4,3 +4,13 @@
 # but you can also edit it by hand.
 
 standard-app-packages
+less
+http
+accounts-password
+npvn:accounts-ui-bootstrap-3
+aldeed:collection2
+aldeed:autoform
+iron:router
+gadicohen:headers
+servicelocale:geoip
+pfafman:font-awesome-4

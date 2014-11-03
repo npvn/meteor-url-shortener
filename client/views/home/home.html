@@ -1,36 +1,10 @@
-<template name="Home">
-
-    <h1 class="custom-headline">NP URL Shortener</h1>
-
-    <form id="mainForm">
-
-        <div class="input-append">
-            <input id="longURLInput" name="longURLInput" data-title="URL not valid" data-placement="left" data-trigger="manual" class="input-xxlarge" type="text" placeholder="Enter your long URL here">
-            <button type="submit" class="btn btn-primary">Submit</button>
+<template name="Home">   
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            {{> URLForm}}
+            <button type="submit" class="btn btn-primary btn-raised" form="url-form">Shorten</button>
         </div>
-
-        <div class="control-group form-inline">
-
-            <div class="input-prepend">
-                <span class="add-on">→ {{getHostName}} / </span>
-                <input id="shortURLInput" name="shortURLInput" data-title="Short URL not valid" data-placement="bottom" data-trigger="manual" class="input-small" type="text" placeholder="  custom-url">
-            </div>
-
-
-            <label class="checkbox inline myLabel">
-                {{#if currentUser}}
-                    <input name="makePrivate" type="checkbox">Make private
-                {{else}}
-                    <div id="checkboxTooltip" data-title="Please login to mark URL as private. Private URLs are not listed and their statistics can only be viewed by the creator." data-placement="right">
-                        <input name="makePrivate" type="checkbox" disabled>Make private
-                    </div>
-
-                {{/if}}
-
-            </label>
-
-        </div>
-
-    </form>
-
+        <div class="col-sm-2"></div>
+    </div>    
 </template>
