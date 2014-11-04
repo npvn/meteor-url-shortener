@@ -7,6 +7,9 @@ jQuery.fn.selectText = function(){
         , element = this[0]
         , range, selection
     ;
+    
+    if (!element) return;
+    
     if (doc.body.createTextRange) {
         range = document.body.createTextRange();
         range.moveToElementText(element);

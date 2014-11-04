@@ -1,5 +1,6 @@
 UserUrlIndexController = RouteController.extend({
-    increment: 15
+    title: 'Your URLs'
+    , increment: 15
     , limit: function() {
         var currentRoute = Router.current();
         return currentRoute && currentRoute.params && parseInt(currentRoute.params.limit)

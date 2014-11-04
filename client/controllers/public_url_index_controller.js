@@ -1,5 +1,6 @@
-PublicUrlIndexController = RouteController.extend({        
-    increment: 15
+PublicUrlIndexController = RouteController.extend({    
+    title: 'Public URLs'
+    , increment: 15
     , limit: function() { 
         var currentRoute = Router.current();
         return currentRoute && currentRoute.params && parseInt(currentRoute.params.limit) 

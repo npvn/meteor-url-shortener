@@ -1,5 +1,6 @@
 UrlShowController = RouteController.extend({
-    data: function() {
+    title: 'URL Details'
+    , data: function() {
         return URLs.findOne({shortURL: this.params.shortURL});
     }
     , waitOn: function() {

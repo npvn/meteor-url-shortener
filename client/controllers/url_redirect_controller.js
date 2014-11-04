@@ -1,5 +1,6 @@
 UrlRedirectController = RouteController.extend({
-    data: function() { 
+    title: 'URL Redirect'
+    , data: function() { 
         Meteor.user(); // reactive trigger: re-run when user's login state changes       
         return URLs.findOne({}, {reactive: false});
     }

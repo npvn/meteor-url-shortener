@@ -1,5 +1,6 @@
 UrlEditController = RouteController.extend({
-    data: function() { 
+    title: 'URL Edit'
+    , data: function() { 
         return URLs.findOne({shortURL: this.params.shortURL}); 
     },
     waitOn: function() { 

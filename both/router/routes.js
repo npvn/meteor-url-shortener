@@ -52,3 +52,11 @@ Router.route('/:shortURL', function () {
     response.writeHead(302, {'Location': location});    
     response.end();
 }, {where: 'server'});
+
+
+// Set page title for each route
+if ( Meteor.isClient ) {
+    Router.onAfterAction(function() {
+        document.title = this.title + ' | URL Shortener';
+    });
+}
