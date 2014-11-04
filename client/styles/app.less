@@ -11,19 +11,8 @@
 @accent: #ff4081;
 @status-private: #8bc34a;
 
-#snackbar {
-    background: rgba(0,0,0,0.8);
-    color: #FFF;
-    padding: 10px 18px;
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    z-index: @zindex-modal + 50;
-    opacity: 0;
-    .transition(1s);
-    &.show {
-        opacity: 1;
-    }
+#snackbar-container {
+    bottom: 60px;
 }
 
 .notification-text {
