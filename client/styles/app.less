@@ -1,0 +1,42 @@
+@import '../lib/meteor-material-design/main.import.less';
+@import 'snackbar.import.less';
+@import 'spinkit.import.less';
+@import 'nv.d3.import.less';
+@import 'url_form.import.less';
+@import 'url_list.import.less';
+@import 'url_redirect.import.less';
+@import 'url_show.import.less';
+@import 'footer.import.less';
+
+@accent: #ff4081;
+@status-private: #8bc34a;
+
+#snackbar {
+    background: rgba(0,0,0,0.8);
+    color: #FFF;
+    padding: 10px 18px;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: @zindex-modal + 50;
+    opacity: 0;
+    .transition(1s);
+    &.show {
+        opacity: 1;
+    }
+}
+
+.notification-text {
+    text-align: center;
+    margin: 50px 0;
+}
+
+.hide-overflow {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.spinner {
+    margin-bottom: 100px;
+}

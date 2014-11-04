@@ -1,0 +1,17 @@
+<template name="UserUrlIndex">
+    <div class="url-list">
+        {{#if currentUser}}
+            {{#if hasURL}}
+                <h2>Your URLs</h2>
+                {{> UrlList}}
+            {{else}}
+                <p class="notification-text">
+                    You haven't created any short link with this account. 
+                    Let's <a href="{{pathFor 'home'}}">make one</a>!
+                </p>
+            {{/if}}
+        {{else}}
+            <p class="notification-text">Please login to view your links.</p>
+        {{/if}}
+    </div>
+</template>

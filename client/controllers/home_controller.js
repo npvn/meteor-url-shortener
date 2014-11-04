@@ -1,0 +1,3 @@
+HomeController = RouteController.extend({
+    
+});

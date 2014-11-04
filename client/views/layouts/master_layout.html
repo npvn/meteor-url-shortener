@@ -1,0 +1,17 @@
+<template name="MasterLayout">
+    <head>
+        <title>URL Shortener</title>
+    </head>
+
+    {{> Header}}
+    
+    <div class="container">
+        {{> yield}}
+
+        <div id="snackbar" class="{{uiClass}}">
+            {{{notification}}}
+        </div>
+    </div>
+    
+    {{> Footer}}    
+</template>

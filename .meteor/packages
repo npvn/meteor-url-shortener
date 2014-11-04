@@ -4,12 +4,13 @@
 # but you can also edit it by hand.
 
 standard-app-packages
-preserve-inputs
+less
+http
 accounts-password
-random
-iron-router
-iron-router-progress
-accounts-ui-bootstrap-dropdown
-spin
-fast-render
-errors
+npvn:accounts-ui-bootstrap-3
+aldeed:collection2
+aldeed:autoform
+iron:router
+gadicohen:headers
+servicelocale:geoip
+pfafman:font-awesome-4

@@ -1,0 +1,27 @@
+<template name="Header">
+    <header class="navbar navbar-default">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{pathFor 'home'}}">URL Shortener</a>
+        </div>
+        <div class="navbar-collapse collapse navbar-responsive-collapse">
+            <ul class="nav navbar-nav">
+                {{#if currentUser}}
+                    <li class="{{isActiveRoute 'user.url.index'}}">
+                        <a href="{{pathFor 'user.url.index'}}">Your URLs</a>
+                    </li>
+                {{/if}}
+                    <li class="{{isActiveRoute 'public.url.index'}}">
+                        <a href="{{pathFor 'public.url.index' limit=15}}">Public URLs</a>
+                    </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {{> loginButtons}}
+            </ul>
+        </div>
+    </header>        
+</template>

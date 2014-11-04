@@ -1,0 +1,18 @@
+<template name="UrlEdit">
+    {{#unless shortURL}}
+        {{> NotFound}}
+    {{else}}
+        {{#if accessible}}
+            <div class="row">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-8">
+                    {{> URLForm}}
+                    <button type="submit" form="url-form" class="btn btn-primary btn-raised">Update</button>
+                </div>
+                <div class="col-sm-2"></div>
+            </div>
+        {{else}}
+            <p class="notification-text">Sorry, you are not allowed to edit this link.</p>
+        {{/if}}
+    {{/unless}}
+</template>

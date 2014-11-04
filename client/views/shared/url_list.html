@@ -1,0 +1,32 @@
+<template name="UrlList">
+    {{#each urls}}
+        <div class="row">            
+            <div class="col-sm-3 hide-overflow">                                
+                <a href="http://{{getHostName}}/{{shortURL}}">
+                    {{getHostName}}/{{shortURL}}
+                </a>
+            </div>
+            <div class="col-sm-5 hide-overflow">
+                <a href="{{targetURL}}">{{targetURL}}</a>
+            </div>
+            <div class="col-sm-1 {{#if isPrivate}}status-private{{/if}}">
+                {{#if onUserUrlIndexRoute}}
+                    {{visibility}}
+                {{/if}}
+            </div>
+            <div class="col-sm-1">
+                {{#if onUserUrlIndexRoute}}
+                    <a href="{{pathFor 'url.edit'}}">Edit</a>
+                {{/if}}
+            </div>
+            <div class="col-sm-2">
+                <a href="{{pathFor 'url.show'}}">{{pluralize visitCount 'visit'}} (view details)</a>
+            </div>
+            <hr class="url-divider">
+        </div>
+    {{/each}}
+    
+    {{#if hasMoreURLs}}
+        <a class="btn btn-primary btn-raised" href='{{loadMorePath}}'>Load more</a>
+    {{/if}}
+</template>
