@@ -1,19 +1,17 @@
 Intro
 ==============
 
-A URL shortening service built with Meteor.
-
 This is a hobby project I did to harden my Meteor skills and play around 
-with [Material Design](https://github.com/npvn/meteor-material-design).
+with <a href="https://github.com/npvn/meteor-material-design" target="_blank">Material Design</a>.
 
 I hope this project will be a good reference for new Meteor learners. Suggestions for 
-improvement (on code structure, UI, UX and anything else) are very welcomed!
+improvement (on code, structure, UI, UX and anything else) are very welcomed!
 
 Features
 ==============
 
 - URLs management: Registered users can manage their previously-created URLs and 
-mark a URL as private.
+mark URLs as private.
 
 - Secured pub/sub pattern to protect private URLs.
 
@@ -24,7 +22,7 @@ the app will switch to client-side routing for user authentication.
 
 - Real-time statistical tracking including number of visits by browser, OS and country.
 
-- UI & UX inspired by the awesome [Material Design](https://github.com/npvn/meteor-material-design) guideline from Google.
+- UI & UX inspired by the awesome <a href="https://github.com/npvn/meteor-material-design" target="_blank">Material Design</a> guideline from Google.
 
 Todo
 ==============
