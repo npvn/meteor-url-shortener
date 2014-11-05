@@ -3,10 +3,11 @@ App.subs = {
 };
 
 
-// App admin code like Meteor.startup or 
-// Deps.autorun will stay in this file
-Deps.autorun(function() {
-  
+Meteor.startup(function() {
+    // Set page title for each route
+    Router.onAfterAction(function() {
+        document.title = this.title + ' | URL Shortener';
+    });
 });
 
 

@@ -16,7 +16,7 @@ mark URLs as private.
 - Secured pub/sub pattern to protect private URLs.
 
 - Sever-side routing for faster URL redirection. If the requested URL is private,
-the app will switch to client-side routing for user authentication.
+the app will switch to client-side for user authentication.
 
 - URL schema for data integrity  (using the awesome `aldeed:collection2` package).
 
