@@ -29,12 +29,15 @@ Meteor.startup(function() {
                 var newShortURL = Random.id().substring(0,5);
             } while ( _.contains(newShortURLs, newShortURL) );
             
+            var date = new Date();
+            
             URLs.insert({
                 targetURL: link
                 , shortURL: newShortURL
                 , isPrivate: false
                 , userId: null
-                , timeCreated: new Date()
+                , timeCreated: date
+                , timeModified: date // for better sorting order
                 , visitCount: 0
             });
         });

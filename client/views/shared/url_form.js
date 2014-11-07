@@ -35,9 +35,11 @@ AutoForm.hooks({
                 _.extend(doc, {_id: urlId});
             // Creating a new url
             } else {
+                var date = new Date();
                 _.extend(doc, {
                     userId: Meteor.userId(),
-                    timeCreated: new Date()
+                    timeCreated: date,
+                    timeModified: date // for better sorting order
                 });
             }            
                         

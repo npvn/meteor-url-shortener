@@ -26,8 +26,7 @@ Schemas.URL = new SimpleSchema({
     }
     , timeModified: {
         type: Date,
-        optional: true,
-        defaultValue: null
+        optional: true
     }  
     , visitCount: {
         type: Number,
