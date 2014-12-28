@@ -31,6 +31,15 @@ Todo
 
 - Allow users to protect URLs by password.
 
+Install
+==============
+
+This repo contains a submodule at `/client/lib/meteor-material-design`
+
+After cloning the repo, pull the submodule with the following command:
+
+`git submodule update --init --recursive`
+
 License
 ==============
 
