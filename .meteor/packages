@@ -11,9 +11,11 @@ npvn:accounts-ui-bootstrap-3
 meteorhacks:kadira
 aldeed:collection2
 aldeed:autoform
-iron:router
 gadicohen:headers
 servicelocale:geoip
 pfafman:font-awesome-4
 meteorhacks:zones
+coffeescript
+iron:router@1.0.7
+space:ui
 

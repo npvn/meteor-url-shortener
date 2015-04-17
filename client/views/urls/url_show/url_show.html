@@ -1,0 +1,46 @@
+<template name="UrlShow">
+    {{#with state.url}}
+        {{#unless shortURL}}
+            {{> NotFound}}
+        {{else}}
+            {{#if ../state.accessible}}
+                <div id="url-show">
+                    <h2>
+                        {{getHostName}}/{{shortURL}}
+                    </h2>
+                    <p class="hide-overflow" title="{{targetURL}}">
+                        Original URL: <a href="{{targetURL}}">{{targetURL}}</a>
+                    </p>
+
+                    <hr>
+
+                    <h3>Real-time Statistics: {{pluralize visitCount 'visit'}}</h3>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div id="browser-chart" class="chart">
+                                <svg></svg>
+                                {{displayChart 'browser'}}
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div id="os-chart" class="chart">
+                                <svg></svg>
+                                {{displayChart 'os'}}
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div id="country-chart" class="chart">
+                                <svg></svg>
+                                {{displayChart 'country'}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {{else}}
+                <p class="notification-text">
+                    This link was marked as private. Only the owner can view its statistics.
+                </p>
+            {{/if}}
+        {{/unless}}
+    {{/with}}
+</template>

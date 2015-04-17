@@ -1,14 +1,21 @@
-App.subs = {
-    userData: Meteor.subscribe('current_user_data')
-};
+
 
 
 Meteor.startup(function() {
-    // Set page title for each route
     Router.onAfterAction(function() {
+        // Set page title for each route
         document.title = this.title + ' | URL Shortener';
+        // Initiate Material Design
+        Meteor.defer(function() {
+            $.material.init();
+        });
     });
 });
+
+
+App.subs = {
+    userData: Meteor.subscribe('current_user_data')
+};
 
 
 App.login = function (email, password, cb) {
@@ -125,7 +132,7 @@ App.isKeyInvalid = function(keyName) {
 };
 
 
-//Global Helpers
+//Global Template Helpers
 Helpers = {};
 
 
