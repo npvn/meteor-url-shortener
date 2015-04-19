@@ -5,6 +5,6 @@ class @UrlShowMediator extends Space.ui.Mediator
   Dependencies:
     store: 'UrlsStore'
 
-  setInitialState:
+  setInitialState: ->
     url: @store.get('url')
     accessible: @store.get('url')?.targetURL? # targetURL is published only to authorized client

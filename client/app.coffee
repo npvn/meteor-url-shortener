@@ -2,7 +2,7 @@ class @MeteorURLShortener extends Space.ui.Application
 
   RequiredModules: ['Space.ui']
 
-  Stores: 'UrlsStore'
+  Stores: ['UrlsStore']
 
   Mediators: ['UrlFormMediator', 'PublicUrlIndexMediator', 'UrlEditMediator',
               'UrlRedirectMediator', 'UrlShowMediator', 'UserUrlIndexMediator']

@@ -1,6 +1,6 @@
 accounts-base@1.2.0
 accounts-password@1.1.1
-aldeed:autoform@3.2.0
+aldeed:autoform@5.1.2
 aldeed:collection2@2.3.3
 aldeed:simple-schema@1.3.2
 anti:i18n@0.4.3
@@ -49,9 +49,9 @@ meteorhacks:zones@1.4.0
 minifiers@1.1.5
 minimongo@1.0.8
 mobile-status-bar@1.0.3
+momentjs:moment@2.8.4
 mongo@1.1.0
 mongo-livedata@1.0.8
-mrt:moment@2.6.0
 npm-bcrypt@0.7.8_2
 npvn:accounts-ui-bootstrap-3@1.1.13
 observe-sequence@1.0.6
@@ -69,11 +69,10 @@ session@1.1.0
 sha@1.0.3
 space:base@1.4.2
 space:messaging@0.3.5
-space:ui@4.3.1
+space:ui@4.3.2
 spacebars@1.0.6
 spacebars-compiler@1.0.6
 srp@1.0.3
-standard-app-packages@1.0.5
 stylus@1.0.7
 templating@1.1.1
 tracker@1.0.7

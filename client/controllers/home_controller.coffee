@@ -7,3 +7,4 @@ class @HomeController
     @router.route '/',
       name: 'home'
       title: 'Home'
+
