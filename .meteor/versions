@@ -56,6 +56,7 @@ npm-bcrypt@0.7.8_2
 npvn:accounts-ui-bootstrap-3@1.1.13
 observe-sequence@1.0.6
 ordered-dict@1.0.3
+ostrio:iron-router-title@0.1.1
 pfafman:font-awesome-4@4.3.0
 random@1.0.3
 reactive-dict@1.1.0

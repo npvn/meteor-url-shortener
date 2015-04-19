@@ -1,4 +1,4 @@
 Template.PublicUrlIndex.helpers
 
   state: ->
-    Template.instance().mediator().getState()
+    Template.instance().mediator.getState()

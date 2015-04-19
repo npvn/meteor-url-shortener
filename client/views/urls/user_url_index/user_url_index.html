@@ -1,7 +1,7 @@
 <template name="UserUrlIndex">
     <div class="url-list">
         {{#if currentUser}}
-            {{#if hasURL}}
+            {{#if state.hasURL}}
                 <h2>Your URLs</h2>
                 {{> UrlList urls=state.urls}}
             {{else}}

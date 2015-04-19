@@ -1,7 +1,7 @@
 Meteor.methods({
     '/url/upsert': function(urlAttributes, targetURLHost) {
         check(_.omit(urlAttributes, '_id'), Schemas.URL);
-        
+
         var newShortURL
             , existingRecord = URLs.findOne({_id: urlAttributes._id})
             , existingShortURL = existingRecord && existingRecord.shortURL

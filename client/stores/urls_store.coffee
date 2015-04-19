@@ -9,6 +9,8 @@ class @UrlsStore extends Space.ui.Store
         timeModified: -1
         timeCreated: -1
 
+    count: URLs.find().count()
+
   @on UrlSubmitted, (e) ->
     # Updating an existing url
     if e.urlId

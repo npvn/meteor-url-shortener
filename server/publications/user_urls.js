@@ -1,6 +1,5 @@
-Meteor.publish('userURLs', function(limit) {
+Meteor.publish('userURLs', function() {
     return URLs.find({userId: this.userId}, {
-        limit: limit
-        , sort: {timeModified: -1, timeCreated: -1}
+        sort: {timeModified: -1, timeCreated: -1}
     });
 });

@@ -2,6 +2,8 @@
 // If :shortURL is a private link, we'll switch to client-side redirection
 // since user authorization is needed
 Router.route('/:shortURL', function () {
+    if (this.params.shortURL === 'favicon.ico') return;
+
     var request = this.request
         , response = this.response
         , url = URLs.findOne({shortURL: this.params.shortURL})
@@ -11,7 +13,10 @@ Router.route('/:shortURL', function () {
     if (!url) location = Router.path('not.found');
 
     // For private links, go to client side to authorize the requester
-    else if (url.isPrivate) location = Router.path('url.redirect', {shortURL: url.shortURL});
+    else if (url.isPrivate) {
+      // XXX TODO Have 'url.redirect' route defined on server, so Router.path can be used
+      location = Meteor.absoluteUrl() + 'redirect/' + url.shortURL;
+    }
 
     // For public links, record statistical data and process redirection
     else {

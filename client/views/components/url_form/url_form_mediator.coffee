@@ -5,6 +5,7 @@ class @UrlFormMediator extends Space.ui.Mediator
   submitURL: (urlId, url) ->
     @publish new UrlSubmitted
       urlId: urlId
+
       url: url
 
       callback: (error, result) ->

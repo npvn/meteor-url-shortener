@@ -1,9 +1,9 @@
 <template name="UrlShow">
-    {{#with state.url}}
-        {{#unless shortURL}}
-            {{> NotFound}}
-        {{else}}
-            {{#if ../state.accessible}}
+    {{#unless state.url.shortURL}}
+        {{> NotFound}}
+    {{else}}
+        {{#if state.accessible}}
+            {{#with state.url}}
                 <div id="url-show">
                     <h2>
                         {{getHostName}}/{{shortURL}}
@@ -36,11 +36,11 @@
                         </div>
                     </div>
                 </div>
-            {{else}}
-                <p class="notification-text">
-                    This link was marked as private. Only the owner can view its statistics.
-                </p>
-            {{/if}}
-        {{/unless}}
-    {{/with}}
+            {{/with}}
+        {{else}}
+            <p class="notification-text">
+                This link was marked as private. Only the owner can view its statistics.
+            </p>
+        {{/if}}
+    {{/unless}}
 </template>

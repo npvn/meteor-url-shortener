@@ -1,4 +1,4 @@
-class @UrlEditMediator
+class @UrlEditMediator extends Space.ui.Mediator
 
   @Template: 'UrlEdit'
 

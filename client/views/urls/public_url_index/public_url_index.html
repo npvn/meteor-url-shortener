@@ -1,6 +1,6 @@
 <template name="PublicUrlIndex">
     <div class="url-list">
-        {{#if hasPublicURLs}}
+        {{#if state.hasPublicURL}}
             <h2>Public URLs</h2>
             {{> UrlList urls=state.urls}}
         {{else}}

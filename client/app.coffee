@@ -19,8 +19,6 @@ class @MeteorURLShortener extends Space.ui.Application
 Meteor.startup ->
 
   Router.onAfterAction ->
-    # Set page title for each route
-    document.title = @title + " | URL Shortener"
     # Initiate Material Design
     Meteor.defer ->
       $.material.init()
@@ -127,6 +125,19 @@ App.isKeyInvalid = (keyName) ->
   invalidKeys = AutoForm.getValidationContext("url-form").invalidKeys()
   return _.any invalidKeys, (key) ->
     key.name is keyName
+
+
+
+App.getMediatorFromView = (view) ->
+  # Given a Blaze View, recursively find the mediator defined on it or its parent views
+  mediator = view._templateInstance?.mediator
+  if not mediator
+    if not view.parentView
+      return
+    else
+      App.getMediatorFromView view.parentView
+  else
+    return mediator
 
 
 #Global Template Helpers
