@@ -9,7 +9,7 @@ class @UrlsStore extends Space.ui.Store
         timeModified: -1
         timeCreated: -1
 
-  @on UrlSubmitted: (e) ->
+  @on UrlSubmitted, (e) ->
     # Updating an existing url
     if e.urlId
       _.extend e.url, _id: e.urlId
