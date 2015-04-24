@@ -1,20 +1,17 @@
 // Server side routing (for faster URL redirection)
 // If :shortURL is a private link, we'll switch to client-side redirection
 // since user authorization is needed
-Router.route('/:shortURL', function () {
-    if (this.params.shortURL === 'favicon.ico') return;
+Picker.route('/:shortURL', function (params, request, response, next) {
+    if (params.shortURL === 'favicon.ico') next();
 
-    var request = this.request
-        , response = this.response
-        , url = URLs.findOne({shortURL: this.params.shortURL})
-        , location;
+    var location
+        , url = URLs.findOne({shortURL: params.shortURL});
 
     // Not found
-    if (!url) location = Router.path('not.found');
+    if (!url) location = Meteor.absoluteUrl() + 'url/not-found';
 
     // For private links, go to client side to authorize the requester
     else if (url.isPrivate) {
-      // XXX TODO Have 'url.redirect' route defined on server, so Router.path can be used
       location = Meteor.absoluteUrl() + 'redirect/' + url.shortURL;
     }
 
@@ -35,4 +32,4 @@ Router.route('/:shortURL', function () {
 
     response.writeHead(302, {'Location': location});
     response.end();
-}, {where: 'server'});
+});
