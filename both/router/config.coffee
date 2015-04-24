@@ -1,5 +1,3 @@
-Router.configure
-	notFoundTemplate: 'NotFound'
-	loadingTemplate: 'Loading'
-	templateNameConverter: 'upperCamelCase'
-	layoutTemplate: 'MasterLayout'
+FlowRouter.notFound =
+  action: ->
+    FlowRouter.render 'MasterLayout', main: 'NotFound'

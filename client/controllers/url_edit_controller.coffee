@@ -1,11 +1,16 @@
 class @UrlEditController
 
   Dependencies:
-    router: 'Router'
+    router: 'FlowRouter'
+    layoutManager: 'FlowLayout'
 
   onDependenciesReady: ->
     @router.route '/edit/:shortURL',
       name: 'url.edit'
       title: 'URL Edit'
-      waitOn: ->
-        Meteor.subscribe 'url', @params.shortURL
+
+      subscriptions: ->
+        @register 'url', Meteor.subscribe('url', @params.shortURL)
+
+      action: =>
+        @layoutManager.render 'MasterLayout', main: 'UrlEdit'

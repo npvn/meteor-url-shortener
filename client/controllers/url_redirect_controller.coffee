@@ -1,11 +1,16 @@
 class @UrlRedirectController
 
   Dependencies:
-    router: 'Router'
+    router: 'FlowRouter'
+    layoutManager: 'FlowLayout'
 
   onDependenciesReady: ->
     @router.route '/redirect/:shortURL',
       name: 'url.redirect'
       title: 'URL Redirect'
-      waitOn: ->
-        Meteor.subscribe 'url', @params.shortURL
+
+      subscriptions: ->
+        @register 'url', Meteor.subscribe('url', @params.shortURL)
+
+      action: =>
+        @layoutManager.render 'MasterLayout', main: 'UrlRedirect'

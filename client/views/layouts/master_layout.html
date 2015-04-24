@@ -6,7 +6,12 @@
     {{> Header}}
     
     <div class="container">
-        {{> yield}}
+        {{#if isSubReady}}
+            {{> Template.dynamic template=main}}
+            {{initMaterialDesign}}
+        {{else}}
+            {{> Loading}}
+        {{/if}}
     </div>
     
     {{> Footer}}    

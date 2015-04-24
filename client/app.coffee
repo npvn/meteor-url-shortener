@@ -13,16 +13,11 @@ class @MeteorURLShortener extends Space.ui.Application
 
   configure: ->
     super
-    @injector.map('Router').to Router
+    @injector.map('FlowRouter').to FlowRouter
+    @injector.map('FlowLayout').to FlowLayout
 
 
 Meteor.startup ->
-
-  Router.onAfterAction ->
-    # Initiate Material Design
-    Meteor.defer ->
-      $.material.init()
-
   new MeteorURLShortener().run()
 
 
@@ -157,6 +152,11 @@ Helpers.pluralize = (n, thing) ->
     "1 " + thing
   else
     n + " " + thing + "s"
+
+
+Helpers.initMaterialDesign = ->
+  Meteor.defer ->
+    $.material.init()
 
 
 _.each Helpers, (helper, key) ->

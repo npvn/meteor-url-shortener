@@ -1,12 +1,16 @@
 class @PublicUrlIndexController
 
   Dependencies:
-    router: 'Router'
+    router: 'FlowRouter'
+    layoutManager: 'FlowLayout'
 
   onDependenciesReady: ->
     @router.route '/public/urls',
       name: 'public.url.index'
       title: 'Public URLs'
 
-      waitOn: =>
-        Meteor.subscribe 'publicURLs'
+      subscriptions: ->
+        @register 'publicURLs', Meteor.subscribe 'publicURLs'
+
+      action: =>
+        @layoutManager.render 'MasterLayout', main: 'PublicUrlIndex'

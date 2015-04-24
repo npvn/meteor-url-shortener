@@ -1,12 +1,16 @@
 class @UserUrlIndexController
 
   Dependencies:
-    router: 'Router'
+    router: 'FlowRouter'
+    layoutManager: 'FlowLayout'
 
   onDependenciesReady: ->
     @router.route '/user/urls',
       name: 'user.url.index'
       title: 'Your URLs'
 
-      waitOn: ->
-        Meteor.subscribe 'userURLs'
+      subscriptions: ->
+        @register 'userURLs', Meteor.subscribe 'userURLs'
+
+      action: =>
+        @layoutManager.render 'MasterLayout', main: 'UserUrlIndex'
