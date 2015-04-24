@@ -1,3 +1,3 @@
 FlowRouter.notFound =
   action: ->
-    FlowRouter.render 'MasterLayout', main: 'NotFound'
+    FlowLayout.render 'MasterLayout', main: 'NotFound'

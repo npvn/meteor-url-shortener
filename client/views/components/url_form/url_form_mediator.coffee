@@ -12,7 +12,7 @@ class @UrlFormMediator extends Space.ui.Mediator
         if error
           Notify.error error.reason
         else
-          if Router.current()?.route.getName() is 'home'
-            Router.go 'url.show', shortURL: result
+          if FlowRouter.current()?.route.name is 'home'
+            FlowRouter.go 'url.show', shortURL: result
           else
-            Router.go 'user.url.index', shortURL: result
+            FlowRouter.go 'user.url.index', shortURL: result

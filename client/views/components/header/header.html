@@ -11,11 +11,11 @@
         <div class="navbar-collapse collapse navbar-responsive-collapse">
             <ul class="nav navbar-nav">
                 {{#if currentUser}}
-                    <li class="{{isActiveRoute 'user.url.index'}}">
+                    <li class="{{isActivePath regex='user.url.index'}}">
                         <a href="{{pathFor 'user.url.index'}}">Your URLs</a>
                     </li>
                 {{/if}}
-                    <li class="{{isActiveRoute 'public.url.index'}}">
+                    <li class="{{isActivePath regex='public.url.index'}}">
                         <a href="{{pathFor 'public.url.index'}}">Public URLs</a>
                     </li>
             </ul>

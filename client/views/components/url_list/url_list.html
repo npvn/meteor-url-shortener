@@ -16,11 +16,11 @@
             </div>
             <div class="col-sm-1">
                 {{#if onUserUrlIndexRoute}}
-                    <a href="{{pathFor 'url.edit'}}">Edit</a>
+                    <a href="{{pathFor 'url.edit' shortURL=shortURL}}">Edit</a>
                 {{/if}}
             </div>
             <div class="col-sm-2">
-                <a href="{{pathFor 'url.show'}}">{{pluralize visitCount 'visit'}} (view details)</a>
+                <a href="{{pathFor 'url.show' shortURL=shortURL}}">{{pluralize visitCount 'visit'}} (view details)</a>
             </div>
             <hr class="url-divider">
         </div>

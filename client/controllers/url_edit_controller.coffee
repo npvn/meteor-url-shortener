@@ -9,8 +9,8 @@ class @UrlEditController
       name: 'url.edit'
       title: 'URL Edit'
 
-      subscriptions: ->
-        @register 'url', Meteor.subscribe('url', @params.shortURL)
+      subscriptions: (params) ->
+        @register 'url', Meteor.subscribe('url', params.shortURL)
 
       action: =>
         @layoutManager.render 'MasterLayout', main: 'UrlEdit'

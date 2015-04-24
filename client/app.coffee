@@ -34,13 +34,13 @@ App.login = (email, password, cb) ->
 App.logout = (cb) ->
   onLogout = (err) ->
     if cb then cb err
-    else Router.go "home"
+    else FlowRouter.go "home"
   Meteor.logout onLogout
 
 
 App.displayChart = (category) ->
   nv.addGraph ->
-    visits = Visits.find(shortURL: Router.current().params.shortURL)
+    visits = Visits.find(shortURL: FlowRouter.current().params.shortURL)
     statistics = App.aggregateData(visits, category)
 
     # XXX TODO Make the charts responsive by automatically redraw them
