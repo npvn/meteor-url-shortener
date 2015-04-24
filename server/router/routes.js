@@ -1,7 +1,7 @@
 // Server side routing (for faster URL redirection)
 // If :shortURL is a private link, we'll switch to client-side redirection
 // since user authorization is needed
-Picker.route('/:shortURL', function (params, request, response, next) {
+Picker.route('/go/:shortURL', function (params, request, response, next) {
     if (params.shortURL === 'favicon.ico') next();
 
     var location
