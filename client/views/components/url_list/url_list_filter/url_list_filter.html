@@ -1,0 +1,13 @@
+<template name="UrlListFilter">
+    <div class="row url-list-filter">
+        <div class="col-md-2">Filter URLs:</div>
+
+        {{#each filters}}
+            {{>
+                UrlListFilterRadio name='url-list-filter' value=this
+                                   selectedValue=data.selectedFilter.get
+                                   handleFilterSelect=handleFilterSelect
+            }}
+        {{/each}}
+    </div>
+</template>

@@ -1,8 +1,7 @@
 <template name="PublicUrlIndex">
     <div class="url-list">
-        {{#if state.hasPublicURL}}
-            <h2>Public URLs</h2>
-            {{> UrlList urls=state.urls}}
+        {{#if hasPublicURL}}
+            {{> UrlList title='Public URLs' urls=state.urls}}
         {{else}}
             <p class="notification-text">
                 There's no public URL to show. Let's <a href="{{pathFor 'home'}}">create one</a>!

@@ -8,6 +8,7 @@ coffeescript
 less
 http
 accounts-password
+reactive-var
 
 npvn:accounts-ui-bootstrap-3
 meteorhacks:kadira
@@ -22,3 +23,5 @@ meteorhacks:flow-router
 arillo:flow-router-helpers
 meteorhacks:flow-layout
 meteorhacks:picker
+
+peerlibrary:blaze-components

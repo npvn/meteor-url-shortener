@@ -1,28 +1,9 @@
 <template name="UrlList">
-    {{#each urls}}
-        <div class="row">            
-            <div class="col-sm-3 hide-overflow">                                
-                <a href="http://{{getHostName}}/go/{{shortURL}}">
-                    {{getHostName}}/go/{{shortURL}}
-                </a>
-            </div>
-            <div class="col-sm-5 hide-overflow">
-                <a href="{{targetURL}}">{{targetURL}}</a>
-            </div>
-            <div class="col-sm-1 {{#if isPrivate}}status-private{{/if}}">
-                {{#if onUserUrlIndexRoute}}
-                    {{visibility}}
-                {{/if}}
-            </div>
-            <div class="col-sm-1">
-                {{#if onUserUrlIndexRoute}}
-                    <a href="{{pathFor 'url.edit' shortURL=shortURL}}">Edit</a>
-                {{/if}}
-            </div>
-            <div class="col-sm-2">
-                <a href="{{pathFor 'url.show' shortURL=shortURL}}">{{pluralize visitCount 'visit'}} (view details)</a>
-            </div>
-            <hr class="url-divider">
-        </div>
-    {{/each}}
+    <h2>{{title}}</h2>
+
+    {{#if onUserUrlIndexRoute}}
+        {{> UrlListFilter selectedFilter=selectedFilter handleFilterSelect=handleFilterSelect}}
+    {{/if}}
+
+    {{> UrlListTable urls=data.urls selectedFilter=selectedFilter}}
 </template>
