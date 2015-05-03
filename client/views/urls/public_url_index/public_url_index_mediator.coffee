@@ -7,4 +7,3 @@ class @PublicUrlIndexMediator extends Space.ui.Mediator
 
   setInitialState: ->
     urls: @store.get 'urls'
-    hasPublicURL: @store.get('count') > 0

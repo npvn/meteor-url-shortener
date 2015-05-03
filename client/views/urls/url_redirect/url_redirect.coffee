@@ -1,7 +1,13 @@
 Template.UrlRedirect.helpers
 
   state: ->
-    Template.instance().mediator.getState()
+    Tracker.nonreactive ->
+      Template.instance().mediator.getState()
+
+  accessible: ->
+    Tracker.nonreactive ->
+      # targetURL is published only to authorized client
+      Template.instance().mediator.getState()?.url?.targetURL?
 
   redirect: ->
     # Record statistical data and process redirection

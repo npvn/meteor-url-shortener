@@ -1,18 +1,22 @@
 <template name="UrlRedirect">
-    {{#unless state.url.shortURL}}
-        {{> NotFound}}
-    {{else}}
-        {{#if state.accessible}}
-            {{#with state.url}}
-              <div id="url-redirect">
-                  <p>Redirecting to:</p>
-                  <p class="hide-overflow" title="{{targetURL}}">{{targetURL}}</p>
-                  <p>{{> Loading}}</p>
-                  {{redirect}}
-              </div>
-            {{/with}}
+    {{#with state.url}}
+        {{#if shortURL}}
+
+            {{#if accessible}}
+                <div id="url-redirect">
+                    <p>Redirecting to:</p>
+                    <p class="hide-overflow" title="{{targetURL}}">{{targetURL}}</p>
+                    <p>{{> Loading}}</p>
+                    {{redirect}}
+                </div>
+            {{else}}
+                <p class="notification-text">This link is private. Only the owner can access it.</p>
+            {{/if}}
+
         {{else}}
-            <p class="notification-text">This link is private. Only the owner can access it.</p>
+
+            {{> render component='NotFound'}}
+
         {{/if}}
-    {{/unless}}
+    {{/with}}
 </template>

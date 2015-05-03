@@ -3,16 +3,16 @@
         <title>URL Shortener</title>
     </head>
 
-    {{> Header}}
+    {{> render component='Header'}}
     
     <div class="container">
         {{#if isSubReady}}
             {{> Template.dynamic template=main}}
             {{initMaterialDesign}}
         {{else}}
-            {{> Loading}}
+            {{> render component='Loading'}}
         {{/if}}
     </div>
     
-    {{> Footer}}    
+    {{> render component='Footer'}}
 </template>

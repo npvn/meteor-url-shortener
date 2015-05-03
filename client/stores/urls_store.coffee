@@ -1,15 +1,8 @@
 class @UrlsStore extends Space.ui.Store
 
   setInitialState: ->
-
-    url: URLs.findOne()
-
-    urls: URLs.find {},
-      sort:
-        timeModified: -1
-        timeCreated: -1
-
-    count: URLs.find().count()
+    url: URLs.findOne(shortURL: FlowRouter.current()?.params?.shortURL)
+    urls: URLs.find({}, {sort: timeModified: -1, timeCreated: -1}).fetch()
 
   @on UrlSubmitted, (e) ->
     # Updating an existing url
@@ -25,5 +18,3 @@ class @UrlsStore extends Space.ui.Store
         timeModified: date # for better sorting order
 
     Meteor.call '/url/upsert', e.url, App.extractHost(e.url.targetURL), e.callback
-
-

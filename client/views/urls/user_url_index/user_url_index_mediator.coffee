@@ -7,4 +7,3 @@ class @UserUrlIndexMediator extends Space.ui.Mediator
 
   setInitialState: ->
     urls: @store.get 'urls'
-    hasURL: @store.get('count') > 0

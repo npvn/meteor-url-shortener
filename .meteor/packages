@@ -22,3 +22,5 @@ meteorhacks:flow-router
 arillo:flow-router-helpers
 meteorhacks:flow-layout
 meteorhacks:picker
+
+meteorhacks:flow-components

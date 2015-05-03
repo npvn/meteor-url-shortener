@@ -35,6 +35,7 @@ localstorage@1.0.3
 logging@1.0.7
 meteor@1.1.6
 meteor-platform@1.2.2
+meteorhacks:flow-components@0.0.36
 meteorhacks:flow-layout@1.1.1
 meteorhacks:flow-router@1.4.2
 meteorhacks:inject-initial@1.0.2
@@ -52,6 +53,7 @@ npvn:accounts-ui-bootstrap-3@1.1.13
 observe-sequence@1.0.6
 ordered-dict@1.0.3
 pfafman:font-awesome-4@4.3.0
+raix:eventemitter@0.1.2
 random@1.0.3
 reactive-dict@1.1.0
 reactive-var@1.0.5

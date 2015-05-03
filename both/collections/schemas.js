@@ -35,4 +35,4 @@ Schemas.URL = new SimpleSchema({
     }
 });
 
-Schemas.URL.namedContext('urlValidationContext');
+UrlValidationContext = Schemas.URL.namedContext('UrlValidationContext');

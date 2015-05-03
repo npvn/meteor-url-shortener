@@ -1,0 +1,5 @@
+<template name="UrlListTable">
+    {{#each state$urls}}
+        {{> render component='UrlListTableRow' url=this}}
+    {{/each}}
+</template>

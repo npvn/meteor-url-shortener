@@ -1,20 +1,23 @@
 <template name="UrlEdit">
-    {{#unless state.url.shortURL}}
-        {{> NotFound}}
-    {{else}}
-        {{#if state.accessible}}
-            <div class="row">
-                <div class="col-sm-2"></div>
-                <div class="col-sm-8">
-                    {{#with state.url}}
-                      {{> UrlForm}}
-                    {{/with}}
-                    <button type="submit" form="url-form" class="btn btn-primary btn-raised">Update</button>
+    {{#with state.url}}
+        {{#if shortURL}}
+
+            {{#if accessible}}
+                <div class="row">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-8">
+                        {{> render component='UrlForm' url=state.url}}
+                    </div>
+                    <div class="col-sm-2"></div>
                 </div>
-                <div class="col-sm-2"></div>
-            </div>
+            {{else}}
+                <p class="notification-text">Sorry, you are not allowed to edit this link.</p>
+            {{/if}}
+
         {{else}}
-            <p class="notification-text">Sorry, you are not allowed to edit this link.</p>
+
+            {{> render component='NotFound'}}
+
         {{/if}}
-    {{/unless}}
+    {{/with}}
 </template>
