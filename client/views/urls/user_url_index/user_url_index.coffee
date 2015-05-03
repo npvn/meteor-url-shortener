@@ -1,4 +1,7 @@
 Template.UserUrlIndex.helpers
 
-  state: ->
-    Template.instance().mediator.getState()
+  mediator: ->
+    Template.instance().mediator
+
+  hasURL: ->
+    Template.instance().mediator.getState()?.urls?.length > 0

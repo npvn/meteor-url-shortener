@@ -1,8 +1,10 @@
 <template name="PublicUrlIndex">
     <div class="url-list">
-        {{#if state.hasPublicURL}}
-            <h2>Public URLs</h2>
-            {{> UrlList urls=state.urls}}
+        {{#if hasPublicURL}}
+            <!--XXX XXX React Comment 1-->
+            <!--Because passing urls=state.urls will kill reactivity, we end up having-->
+            <!--to pass the whole mediator!-->
+            {{> UrlList title='Public URLs' mediator=mediator}}
         {{else}}
             <p class="notification-text">
                 There's no public URL to show. Let's <a href="{{pathFor 'home'}}">create one</a>!

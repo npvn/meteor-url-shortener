@@ -4,7 +4,7 @@ class @MeteorURLShortener extends Space.ui.Application
 
   Stores: ['UrlsStore']
 
-  Mediators: ['UrlFormMediator', 'PublicUrlIndexMediator', 'UrlEditMediator',
+  Mediators: ['UrlFormContainerMediator', 'PublicUrlIndexMediator', 'UrlEditMediator',
               'UrlRedirectMediator', 'UrlShowMediator', 'UserUrlIndexMediator']
 
   Controllers: ['HomeController', 'PublicUrlIndexController', 'UrlEditController',
@@ -19,6 +19,9 @@ class @MeteorURLShortener extends Space.ui.Application
 
 Meteor.startup ->
   new MeteorURLShortener().run()
+
+
+@App = {};
 
 
 App.subs =
@@ -138,7 +141,7 @@ App.getMediatorFromView = (view) ->
 #Global Template Helpers
 
 
-Helpers = {}
+@Helpers = {}
 
 
 Helpers.getHostName = ->
@@ -156,7 +159,9 @@ Helpers.pluralize = (n, thing) ->
 
 Helpers.initMaterialDesign = ->
   Meteor.defer ->
+    $('[data-toggle="tooltip"]').tooltip()
     $.material.init()
+    $('.form-control.active').removeClass 'empty'
 
 
 _.each Helpers, (helper, key) ->

@@ -6,5 +6,4 @@ class @UrlEditMediator extends Space.ui.Mediator
     store: 'UrlsStore'
 
   setInitialState: ->
-    url: @store.get('url')
-    accessible: @store.get('url')?.userId is Meteor.userId()
+    url: @store.get('url') or {}

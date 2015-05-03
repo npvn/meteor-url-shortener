@@ -4,7 +4,7 @@ aldeed:autoform@5.1.2
 aldeed:collection2@2.3.3
 aldeed:simple-schema@1.3.2
 anti:i18n@0.4.3
-arillo:flow-router-helpers@0.1.3
+arillo:flow-router-helpers@0.1.4
 autoupdate@1.2.1
 base64@1.0.3
 binary-heap@1.0.3
@@ -36,9 +36,9 @@ logging@1.0.7
 meteor@1.1.6
 meteor-platform@1.2.2
 meteorhacks:flow-layout@1.1.1
-meteorhacks:flow-router@1.4.2
+meteorhacks:flow-router@1.5.0
 meteorhacks:inject-initial@1.0.2
-meteorhacks:kadira@2.20.1
+meteorhacks:kadira@2.20.2
 meteorhacks:meteorx@1.3.1
 meteorhacks:picker@1.0.2
 minifiers@1.1.5
@@ -55,6 +55,7 @@ pfafman:font-awesome-4@4.3.0
 random@1.0.3
 reactive-dict@1.1.0
 reactive-var@1.0.5
+reactjs:react@0.2.3
 reload@1.1.3
 retry@1.0.3
 routepolicy@1.0.5
@@ -62,7 +63,7 @@ service-configuration@1.0.4
 servicelocale:geoip@0.1.3
 session@1.1.0
 sha@1.0.3
-space:base@1.4.2
+space:base@1.4.3
 space:messaging@0.3.5
 space:ui@4.3.2
 spacebars@1.0.6

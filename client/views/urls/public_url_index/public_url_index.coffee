@@ -1,4 +1,7 @@
 Template.PublicUrlIndex.helpers
 
-  state: ->
-    Template.instance().mediator.getState()
+  mediator: ->
+    Template.instance().mediator
+
+  hasPublicURL: ->
+    Template.instance().mediator.getState()?.urls?.length > 0

@@ -1,6 +1,12 @@
-class @UrlFormMediator extends Space.ui.Mediator
+class @UrlFormContainerMediator extends Space.ui.Mediator
 
-  @Template: 'UrlForm'
+  @Template: 'UrlFormContainer'
+
+  Dependencies:
+    store: 'UrlsStore'
+
+  setInitialState: ->
+    url: @store.get('url') or {}
 
   submitURL: (urlId, url) ->
     @publish new UrlSubmitted

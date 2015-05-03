@@ -1,3 +1,12 @@
+App = {};
+
+
+App.getReservedPaths = function() {
+    return [ 'public', 'show', 'edit', 'user', 'undefined', 'admin', 'help',
+             'support', 'contact' ];
+};
+
+
 App.processRootURL = function(rootURL) {
     if ( rootURL.substring(0,8) === 'https://' ) rootURL = rootURL.slice(8);
     else if ( rootURL.substring(0,7) === 'http://' ) rootURL = rootURL.slice(7);
